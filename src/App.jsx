@@ -20,7 +20,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div data-theme={theme} className='bg-base-300 font-geist'>
+    <div data-theme={theme} className='bg-base-300 font-geist h-[100dvh] flex flex-col'>
       <Navbar theme={theme} setTheme={setTheme} />
       <Main />
       <UserInput />

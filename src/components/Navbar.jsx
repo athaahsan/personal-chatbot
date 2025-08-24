@@ -9,7 +9,7 @@ import { FaAdjust } from "react-icons/fa";
 const Navbar = ({ theme, setTheme }) => {
     return (
         <>
-            <div className="fixed navbar bg-base-300/90 backdrop-blur-sm top-0 z-50">
+            <div className="sticky navbar bg-base-300/90 backdrop-blur-sm top-0 z-50">
                 <div className="navbar-start gap-5 ml-2 sm:ml-4">
                     <a
                         href="https://github.com/athaahsan/personal-chatbot"
