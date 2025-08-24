@@ -68,6 +68,8 @@ const UserInput = () => {
     }, [message]);
 
     const handleKeyDown = (e) => {
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (isTouchDevice) return;
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
             handleSend();
@@ -86,7 +88,7 @@ const UserInput = () => {
     };
 
     return (
-        <div className="sticky bottom-0 left-0 w-full border-t border-none px-2 pb-2">
+        <div className="fixed bottom-0 left-0 w-full border-t border-none px-2 pb-2">
             <div className="flex max-w-3xl mx-auto bg-base-100/90 backdrop-blur-sm p-2.5 rounded-xl gap-2 flex-col border border-base-content/10">
                 <AnimatePresence>
                     {imagePreview && (

@@ -4,7 +4,7 @@ import React from 'react'
 const Chat = () => {
   return (
     <div className='px-4'>
-      <div className='flex max-w-3xl mx-auto h-100vh mt-2 mb-8'>
+      <div className='flex max-w-3xl mx-auto h-100vh mt-20 mb-36'>
         <div className="flex flex-col gap-6 w-full">
           {/* Chat bubble dummy */}
           {Array.from({ length: 30 }).map((_, i) => (

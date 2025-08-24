@@ -7,6 +7,9 @@ import Main from './components/Chat';
 
 function App() {
   console.log("May God give me strength to let her go.");
+  console.log(('ontouchstart' in window) || navigator.maxTouchPoints > 0 ? "Mobile device detected." : "Desktop device detected.");
+  console.log('ontouchstart', ('ontouchstart' in window));
+  console.log('navigator.maxTouchPoints', navigator.maxTouchPoints);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
   });
