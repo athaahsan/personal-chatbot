@@ -3,7 +3,7 @@ import './App.css'
 
 import UserInput from './components/UserInput';
 import Navbar from './components/Navbar';
-import Main from './components/Chat';
+import Chat from './components/Chat';
 
 function App() {
   console.log("May God give me strength to let her go.");
@@ -19,12 +19,26 @@ function App() {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  const [vh, setVh] = useState(window.visualViewport?.height || window.innerHeight);
+  useEffect(() => {
+    const handleResize = () => {
+      setVh(window.visualViewport?.height || window.innerHeight);
+    };
+    window.visualViewport?.addEventListener("resize", handleResize);
+    return () => {
+      window.visualViewport?.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   return (
-    <div data-theme={theme} className='bg-base-300 font-geist h-[100dvh] flex flex-col overflow-auto'>
+    <div data-theme={theme} className="bg-base-300 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar" >
       <Navbar theme={theme} setTheme={setTheme} />
-      <Main />
+        <Chat />
       <UserInput />
     </div>
+
+
   )
 }
 
