@@ -9,7 +9,7 @@ import { FaAdjust } from "react-icons/fa";
 const Navbar = ({ theme, setTheme }) => {
     return (
         <>
-            <div className="sticky top-0 navbar bg-base-300/80 backdrop-blur-lg z-50">
+            <div className="sticky top-0 navbar bg-base-200/80 backdrop-blur-lg z-50">
                 <div className="navbar-start gap-5 ml-2 sm:ml-4">
                     <a
                         href="https://github.com/athaahsan/personal-chatbot"
@@ -76,7 +76,7 @@ const Navbar = ({ theme, setTheme }) => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu dropdown-content bg-base-100 rounded-lg z-1 mt-4 w-32 shadow join-vertical p-0 border border-base-content/10"
+                            className="menu dropdown-content bg-base-100 rounded-lg z-1 mt-4 w-32 join-vertical p-0 border border-base-content/10 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
                         >
                             {[
                                 "System",
@@ -84,12 +84,8 @@ const Navbar = ({ theme, setTheme }) => {
                                 "Dark",
                                 "Dim",
                                 "Dracula",
-                                "Sunset",
-                                "Business",
-                                "Corporate",
-                                "Winter",
                                 "Nord",
-                                "Lemonade",
+                                "Winter",
                             ].map((item, index, arr) => {
                                 const value = item.toLowerCase();
                                 const id = `radio${index + 1}`;
@@ -114,8 +110,8 @@ const Navbar = ({ theme, setTheme }) => {
                                                 className={`min-w-0 w-full font-normal join-item btn btn-ghost ${roundedClass} peer-checked:bg-primary peer-checked:text-primary-content flex justify-between items-center`}
                                             >
                                                 {item}
-                                                {["Light", "Corporate", "Winter", "Nord", "Lemonade"].includes(item) && <MdOutlineLightMode />}
-                                                {["Dark", "Dim", "Dracula", "Business", "Sunset"].includes(item) && <MdOutlineDarkMode />}
+                                                {["Light", "Winter", "Nord"].includes(item) && <MdOutlineLightMode />}
+                                                {["Dark", "Dim", "Dracula"].includes(item) && <MdOutlineDarkMode />}
                                                 {["System"].includes(item) && <FaAdjust />}
                                             </label>
                                         </li>

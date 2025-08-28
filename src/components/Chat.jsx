@@ -1,21 +1,18 @@
 import { div } from 'framer-motion/client'
 import React from 'react'
 
-const Chat = () => {
+const Chat = ({ listUserMessage }) => {
   return (
-    <div className='px-4'>
-      <div className='flex max-w-3xl mx-auto mt-3 mb-7'>
-        <div className="flex flex-col gap-6 w-full">
+    <div className='px-5.5 flex-1'>
+      <div className='flex max-w-3xl mx-auto mt-2 mb-8'>
+        <div className="flex flex-col gap-8 w-full">
           {/* Chat bubble dummy */}
           {Array.from({ length: 30 }).map((_, i) => (
             <div
               key={i}
-              className={`chat ${i % 2 !== 0 ? "" : "chat-end"
-                }`}
+              className={`${i % 2 !== 0 ? "text-base" : "text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/8 rounded-2xl flex justify-end w-fit"}`}
             >
-              <div className={`${i % 2 !== 0 ? "text-base" : "text-base chat-bubble bg-base-100 rounded-2xl"}`}>
-                Pesan ke-{i + 1} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-              </div>
+              Pesan ke-{i + 1} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, maxime omnis laudantium vel ullam atque officia quia libero excepturi iusto quasi obcaecati assumenda, unde deleniti ipsum nesciunt architecto, harum repellat!
             </div>
           ))}
         </div>
