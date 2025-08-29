@@ -5,9 +5,16 @@ import UserInput from './components/UserInput';
 import Navbar from './components/Navbar';
 import Chat from './components/Chat';
 import Welcoming from './components/Welcoming';
+import { motion } from "framer-motion";
+
 
 function App() {
-  console.log("May God give me strength to let her go.");
+  const hope = `
+    May God 
+    give me strength 
+    to let her go.
+    `;
+  console.log(hope);
 
   const [listUserMessage, setListUserMessage] = useState(null);
 
@@ -27,15 +34,15 @@ function App() {
   }, [theme]);
 
   return (
-    <div data-theme={theme} className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar" >
+    <div data-theme={theme} className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory" >
       <Navbar theme={theme} setTheme={setTheme} />
       {listUserMessage === null && (
-        <Welcoming userName={userName} setUsername={setUserName}/>
+        <Welcoming userName={userName} setUsername={setUserName} />
       )}
       {listUserMessage !== null && (
         <Chat listUserMessage={listUserMessage} />
       )}
-      <UserInput setListUserMessage={setListUserMessage} userName={userName} setUserName={setUserName}/>
+      <UserInput setListUserMessage={setListUserMessage} userName={userName} setUserName={setUserName} />
     </div>
 
 
