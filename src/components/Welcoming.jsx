@@ -36,7 +36,7 @@ const Welcoming = ({ userName, setUsername }) => {
 
                     <div className="flex flex-col w-full ">
 
-                        <div className='flex flex-col my-64 gap-2 flex items-center justify-center snap-center snap-always'>
+                        <div className='flex flex-col my-[50vh] gap-2 flex items-center justify-center snap-center snap-always'>
                             <div className='flex flex-row justify-center items-center'>
                                 <div className='opacity-50'>
                                     Hi,&nbsp;
@@ -95,7 +95,9 @@ const Welcoming = ({ userName, setUsername }) => {
                             </div>
                         </div>
 
-                        <div className='flex items-center my-64 justify-center snap-center snap-always'>
+                        <div className="divider m-0 p-0"></div>
+
+                        <div className='flex items-center my-[50vh] justify-center snap-center snap-always'>
                             <div className="mockup-code w-full rounded-2xl">
                                 <pre data-prefix="1">
                                     <code className='text-purple-400'>
