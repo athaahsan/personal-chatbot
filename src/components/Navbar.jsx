@@ -71,7 +71,7 @@ const Navbar = ({ theme, setTheme }) => {
                 </div>
                 <div className="navbar-end mr-2 sm:mr-4">
                     <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-sm btn-accent btn-circle transition-colors ">
+                        <div tabIndex={0} role="button" className="btn btn-sm btn-primary btn-circle transition-colors ">
                             <MdOutlinePalette size={24} />
                         </div>
                         <ul
