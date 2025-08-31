@@ -144,7 +144,7 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage }, ref) =>
     };
 
     return (
-        <div className="sticky bottom-0 left-0 w-full px-2 pb-2" ref={ref}>
+        <div className="sticky bottom-0 left-0 w-full px-2 pb-2 z-100" ref={ref}>
             <div className="m-0 p-0 max-w-3xl mx-auto bg-white/20 rounded-xl">
                 <div className="flex max-w-3xl mx-auto bg-base-100/80 backdrop-blur-lg p-3 rounded-xl gap-2 flex-col border border-base-content/10">
                     <AnimatePresence>

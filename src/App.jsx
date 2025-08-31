@@ -104,13 +104,13 @@ function App() {
             <motion.button
               onClick={scrollToBottom}
               style={{ bottom: inputHeight + 16 }}
-              className="btn btn-circle btn-sm btn-primary fixed left-1/2 -translate-x-1/2 transition"
+              className="btn btn-circle btn-sm btn-primary fixed left-1/2 -translate-x-1/2 transition z-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
             >
-              <MdOutlineArrowDownward size={20} />
+              <MdOutlineArrowDownward size={22} />
             </motion.button>
           )}
         </AnimatePresence>
