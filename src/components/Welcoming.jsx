@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 
 const Welcoming = ({ userName, setUsername }) => {
-    const [isFocused, setIsFocused] = useState(false);
+    const [isFocused, setIsFocused] = useState(false); //userName input focused/not
     const [cursor, setCursor] = useState("|"); //blinking cursor for placeholder typing
     useEffect(() => {
         const interval = setInterval(() => {
@@ -31,7 +31,7 @@ const Welcoming = ({ userName, setUsername }) => {
 
                 <div className="flex flex-col w-full ">
 
-                    <div className='flex flex-col my-[50vh] gap-2 flex items-center justify-center snap-center snap-always'>
+                    <div className='flex flex-col my-[50dvh] gap-2 flex items-center justify-center snap-center snap-always'>
                         <div className='flex flex-row justify-center items-center'>
                             <div className='opacity-50'>
                                 Hi,&nbsp;
@@ -58,8 +58,9 @@ const Welcoming = ({ userName, setUsername }) => {
                                     className="h-[31px] sm:h-[36px] input input-ghost input-md rounded-none border-transparent focus:outline-none focus:ring-0 focus:border-transparent focus:bg-transparent focus:text-base-content hover:bg-transparent p-0 my-0 text-2xl sm:text-3xl "
                                 />
                             </div>
+                            &nbsp;
                             <div className=''>
-                                &nbsp;👋
+                                    👋
                             </div>
                         </div>
 
@@ -90,7 +91,7 @@ const Welcoming = ({ userName, setUsername }) => {
                         </div>
                     </div>
 
-                    <div className='flex items-center my-[50vh] justify-center snap-center snap-always'>
+                    <div className='flex items-center my-[50dvh] justify-center snap-center snap-always'>
                         <div className="mockup-code w-full rounded-2xl">
                             <pre data-prefix="1">
                                 <code className='text-purple-400'>

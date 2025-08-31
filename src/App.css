@@ -5,6 +5,8 @@
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "katex/dist/katex.min.css";
+
 
 @plugin "daisyui" {
   themes: all;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
 import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft, PiSmileyBlank, PiPencil } from "react-icons/pi";
@@ -11,9 +11,9 @@ import { FaTimes } from "react-icons/fa";
 
 
 
-const UserInput = ({ userName, setUserName, setListUserMessage }) => {
+const UserInput = forwardRef(({ userName, setUserName, setListMessage }, ref) => {
     const messages = ["about Atha...", "anything..."];
-    const [userMessage, setUserMessage] = useState("");
+    const [userMessage, setUserMessage] = useState(``);
     const [placeholder, setPlaceholder] = useState("");
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
@@ -137,13 +137,14 @@ const UserInput = ({ userName, setUserName, setListUserMessage }) => {
         console.log("[RESPONSE STYLE]:", responseStylePrompt);
         console.log("[TIME NOW]:", timeNow)
         console.log("Picture (Base64):", imageData);
+        setListMessage(prev => [...prev, userMessage]);
         setUserMessage("");
         setImagePreview(null);
         setImageData(null);
     };
 
     return (
-        <div className="sticky bottom-0 left-0 w-full px-2 pb-2">
+        <div className="sticky bottom-0 left-0 w-full px-2 pb-2" ref={ref}>
             <div className="m-0 p-0 max-w-3xl mx-auto bg-white/20 rounded-xl">
                 <div className="flex max-w-3xl mx-auto bg-base-100/80 backdrop-blur-lg p-3 rounded-xl gap-2 flex-col border border-base-content/10">
                     <AnimatePresence>
@@ -355,6 +356,6 @@ const UserInput = ({ userName, setUserName, setListUserMessage }) => {
 
         </div>
     );
-};
+});
 
 export default UserInput;
