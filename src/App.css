@@ -7,6 +7,12 @@
 @plugin "@tailwindcss/typography";
 @import "katex/dist/katex.min.css";
 
+.prose code.hljs {
+  @apply bg-transparent shadow-none border-none p-0
+}
+ .prose code {
+  @apply bg-neutral text-neutral-content border-none
+ }
 
 @plugin "daisyui" {
   themes: all;

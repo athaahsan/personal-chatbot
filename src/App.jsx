@@ -15,7 +15,7 @@ function App() {
   console.log(hope);
 
   const [listMessage, setListMessage] = useState([]);
-  const [convHistory, setConvHistory] = useState("")
+  const [convHistory, setConvHistory] = useState(``)
 
   const [userName, setUserName] = useState(() => {
     return localStorage.getItem("userName") || "";
@@ -94,9 +94,12 @@ function App() {
         )}
         <UserInput
           ref={inputRef}
+          listMessage={listMessage}
           setListMessage={setListMessage}
           userName={userName}
           setUserName={setUserName}
+          convHistory={convHistory}
+          setConvHistory={setConvHistory}
         />
 
         <AnimatePresence>
@@ -104,7 +107,7 @@ function App() {
             <motion.button
               onClick={scrollToBottom}
               style={{ bottom: inputHeight + 16 }}
-              className="btn btn-circle btn-sm btn-primary fixed left-1/2 -translate-x-1/2 transition z-10"
+              className="btn btn-circle btn-sm btn-soft btn-primary fixed left-1/2 -translate-x-1/2 transition z-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

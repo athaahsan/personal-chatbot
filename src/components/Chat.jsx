@@ -25,9 +25,9 @@ const Chat = ({ listMessage }) => {
                 key={i}
                 className={`${i % 2 !== 0 ? "text-base wrap-anywhere" : "wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/8 rounded-2xl flex justify-end w-fit"}`}
               >
-                {i % 2 !== 0 && <div className='prose max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:shadow-none prose-pre:border-0'>
+                {i % 2 !== 0 && <div className='prose max-w-none '>
                   <ReactMarkdown
-                    remarkPlugins={[remarkGfm, remarkBreaks,remarkMath]}
+                    remarkPlugins={[remarkGfm,remarkBreaks,remarkMath]}
                     rehypePlugins={[rehypeHighlight,rehypeKatex]}
                   >
                     {msg}

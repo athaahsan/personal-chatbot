@@ -11,7 +11,7 @@ import { FaTimes } from "react-icons/fa";
 
 
 
-const UserInput = forwardRef(({ userName, setUserName, setListMessage }, ref) => {
+const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessage, convHistory, setConvHistory }, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
     const [placeholder, setPlaceholder] = useState("");
@@ -130,14 +130,85 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage }, ref) =>
         }
     };
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (!userMessage.trim() && !imagePreview) return;
+        const originalUserMessage = userMessage;
         console.log("[USER MESSAGE]:", userMessage);
         console.log("[USER NAME]:", userName);
         console.log("[RESPONSE STYLE]:", responseStylePrompt);
         console.log("[TIME NOW]:", timeNow)
+        console.log('[CONVERSATION HISTORY (before)]:', convHistory)
         console.log("Picture (Base64):", imageData);
-        setListMessage(prev => [...prev, userMessage]);
+        setUserMessage("");
+        setImagePreview(null);
+        setImageData(null);
+        setListMessage(prev => [...prev, originalUserMessage, '']);
+        const response = await fetch("/aiResponse", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                timeNow,
+                responseStylePrompt,
+                convHistory,
+                userName,
+                userMessage: originalUserMessage,
+            }),
+        });
+        let finalResponse = "";
+        const reader = response.body?.getReader();
+        if (!reader) throw new Error("Response body not readable");
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let isDone = false;
+        try {
+            while (!isDone) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+
+                let lineEnd;
+                while ((lineEnd = buffer.indexOf("\n")) >= 0) {
+                    const line = buffer.slice(0, lineEnd).trim();
+                    buffer = buffer.slice(lineEnd + 1);
+
+                    if (line.startsWith("data: ")) {
+                        const data = line.slice(5).trim();
+                        if (data === "[DONE]") {
+                            isDone = true;
+                            break;
+                        }
+
+                        try {
+                            const parsed = JSON.parse(data);
+                            const content = parsed.choices[0]?.delta?.content;
+                            if (content) {
+                                // Update AI bubble terakhir (append streaming)
+                                finalResponse += content;
+                                setListMessage(prev => {
+                                    const newMessages = [...prev];
+                                    newMessages[newMessages.length - 1] += content;
+                                    return newMessages;
+                                });
+                            }
+                        } catch (e) {
+                            // JSON invalid
+                        }
+                    }
+                }
+            }
+        } finally {
+            reader.cancel();
+        }
+        setConvHistory(prev => {
+            const newHistory = `${prev}USER: ${userMessage}
+ASSISTANT: ${finalResponse}
+                
+`;
+            console.log(`[CONVERSATION HISTORY (after)]:
+${newHistory}`);
+            return newHistory;
+        });
         setUserMessage("");
         setImagePreview(null);
         setImageData(null);
