@@ -25,14 +25,20 @@ const Chat = ({ listMessage }) => {
                 key={i}
                 className={`${i % 2 !== 0 ? "text-base wrap-anywhere" : "wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/8 rounded-2xl flex justify-end w-fit"}`}
               >
-                {i % 2 !== 0 && <div className='prose max-w-none '>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm,remarkBreaks,remarkMath]}
-                    rehypePlugins={[rehypeHighlight,rehypeKatex]}
-                  >
-                    {msg}
-                  </ReactMarkdown>
-                </div>}
+                {i % 2 !== 0 && (
+                  <div className="prose max-w-none">
+                    {listMessage[listMessage.length - 1] === "" && i === listMessage.length - 1 ? (
+                      <span className="loading loading-dots loading-xl"></span>
+                    ) : (
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
+                        rehypePlugins={[rehypeHighlight, rehypeKatex]}
+                      >
+                        {msg}
+                      </ReactMarkdown>
+                    )}
+                  </div>
+                )}
                 {i % 2 === 0 && <div className='whitespace-pre-wrap'>
                   {msg}
                 </div>}

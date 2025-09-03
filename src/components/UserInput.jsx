@@ -130,8 +130,12 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
         }
     };
 
+    const [responseDone, setResponseDone] = useState(true);
+    const [responseThinking, setResponseThinking] = useState(false)
+
     const handleSend = async () => {
-        if (!userMessage.trim() && !imagePreview) return;
+        if ((!userMessage.trim() && !imagePreview) || responseDone===false) return;
+        setResponseDone(false)
         const originalUserMessage = userMessage;
         console.log("[USER MESSAGE]:", userMessage);
         console.log("[USER NAME]:", userName);
@@ -198,6 +202,7 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                 }
             }
         } finally {
+            setResponseDone(true)
             reader.cancel();
         }
         setConvHistory(prev => {
@@ -412,8 +417,9 @@ ${newHistory}`);
 
                         </div>
 
-                        <button onClick={handleSend} disabled={!userMessage.trim() && !imagePreview} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
-                            <FiArrowUp size={16} />
+                        <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone===false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
+                            {responseDone===true && <FiArrowUp size={16} />}
+                            {responseDone===false && <span className="loading loading-spinner loading-xs"></span>}
                         </button>
 
                     </div>
