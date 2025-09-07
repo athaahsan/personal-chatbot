@@ -33,6 +33,15 @@ const Chat = ({ listMessage }) => {
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
                         rehypePlugins={[rehypeHighlight, rehypeKatex]}
+                        components={{
+                          img: ({ node, ...props }) => (
+                            <img
+                              {...props}
+                              className="max-w-50 h-auto rounded-md"
+                              alt={props.alt}
+                            />
+                          ),
+                        }}
                       >
                         {msg}
                       </ReactMarkdown>

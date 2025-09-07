@@ -1,12 +1,21 @@
-# React + Vite
+# Personal Chatbot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal assistant chatbot that can answer questions about Atha Ahsan Xavier Haris (me) while also providing general information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Personal Q&A**: Provides detailed answers about Atha's background, education, projects, and interests.
+- **General Information**: Capable of answering various general knowledge questions.
+- **Responsive Interface**: User-friendly and responsive design for smooth interaction.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React.js, Vite
+- **Styling**: Tailwind CSS, DaisyUI
+- **Chat Model**: OpenAI GPT-5-Chat via OpenRouter
+- **Hosting & Backend**: Netlify (Functions + Edge Functions)
+
+## Live Demo
+
+This project is hosted using Netlify and can be accessed here:
+👉 [atha-personal-chatbot.netlify.app](https://atha-personal-chatbot.netlify.app/)

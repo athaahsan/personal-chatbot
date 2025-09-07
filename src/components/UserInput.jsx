@@ -37,7 +37,7 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
     }, []);
 
     const [responseStylePrompt, setResponseStylePrompt] = useState(() => {
-        return localStorage.getItem("responseStylePrompt") || "Respond in a warm, approachable, and friendly manner, as if talking to a close friend. Use casual and conversational language.";
+        return localStorage.getItem("responseStylePrompt") || "Respond in a warm, approachable, and friendly manner, as if talking to a close friend. Use casual and conversational language. Provide detailed and engaging responses with elaboration.";
     });
     useEffect(() => {
         localStorage.setItem("responseStylePrompt", responseStylePrompt);
@@ -50,13 +50,13 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
     useEffect(() => {
         localStorage.setItem("responseStyle", responseStyle);
         if (responseStyle === "friendly") {
-            setResponseStylePrompt("Respond in a warm, approachable, and friendly manner, as if talking to a close friend. Use casual and conversational language.");
+            setResponseStylePrompt("Respond in a warm, approachable, and friendly manner, as if talking to a close friend. Use casual and conversational language. Provide detailed and engaging responses with elaboration.");
         } else if (responseStyle === "academic") {
-            setResponseStylePrompt("Respond in a precise, formal, and academic tone, as if writing a scholarly article. Use clear and structured language.");
+            setResponseStylePrompt("Respond in a precise, formal, and academic tone, as if writing a scholarly article. Use clear and structured language. Provide thorough explanations and detailed reasoning.");
         } else if (responseStyle === "concise") {
             setResponseStylePrompt("Respond in a short, direct, and to-the-point manner. Avoid unnecessary details and keep the response brief.");
         } else if (responseStyle === "cynic") {
-            setResponseStylePrompt("Respond in a critical, sarcastic, and somewhat skeptical tone, as if questioning everything. Use wit and irony.");
+            setResponseStylePrompt("Respond in a critical, sarcastic, and somewhat skeptical tone, as if questioning everything. Use wit and irony. Expand with detailed remarks and sharp observations.");
         }
     }, [responseStyle]);
 
@@ -134,14 +134,14 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
     const [responseThinking, setResponseThinking] = useState(false)
 
     const handleSend = async () => {
-        if ((!userMessage.trim() && !imagePreview) || responseDone===false) return;
+        if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
         setResponseDone(false)
         const originalUserMessage = userMessage;
         console.log("[USER MESSAGE]:", userMessage);
         console.log("[USER NAME]:", userName);
         console.log("[RESPONSE STYLE]:", responseStylePrompt);
         console.log("[TIME NOW]:", timeNow)
-        console.log('[CONVERSATION HISTORY (before)]:', convHistory)
+        console.log('[CONVERSATION HISTORY (before)]:\n', convHistory)
         console.log("Picture (Base64):", imageData);
         setUserMessage("");
         setImagePreview(null);
@@ -159,6 +159,7 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
             }),
         });
         let finalResponse = "";
+        let aiReasoning = "";
         const reader = response.body?.getReader();
         if (!reader) throw new Error("Response body not readable");
         const decoder = new TextDecoder();
@@ -186,14 +187,17 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                         try {
                             const parsed = JSON.parse(data);
                             const content = parsed.choices[0]?.delta?.content;
+                            const reasoning = parsed.choices[0]?.delta?.reasoning;
                             if (content) {
-                                // Update AI bubble terakhir (append streaming)
                                 finalResponse += content;
                                 setListMessage(prev => {
                                     const newMessages = [...prev];
                                     newMessages[newMessages.length - 1] += content;
                                     return newMessages;
                                 });
+                            }
+                            if (reasoning) {
+                                aiReasoning += reasoning;
                             }
                         } catch (e) {
                             // JSON invalid
@@ -205,18 +209,25 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
             setResponseDone(true)
             reader.cancel();
         }
+        if (!finalResponse && aiReasoning) {
+            finalResponse = aiReasoning;
+            setListMessage(prev => {
+                const newMessages = [...prev];
+                newMessages[newMessages.length - 1] += finalResponse;
+                return newMessages;
+            });
+        }
         setConvHistory(prev => {
-            const newHistory = `${prev}USER: ${userMessage}
-ASSISTANT: ${finalResponse}
-                
+            const newHistory = `${prev}{
+    USER: "${userMessage}",
+    ASSISTANT: "${finalResponse}"
+},
 `;
             console.log(`[CONVERSATION HISTORY (after)]:
 ${newHistory}`);
             return newHistory;
         });
-        setUserMessage("");
-        setImagePreview(null);
-        setImageData(null);
+        console.log("AI REASONING:", aiReasoning);
     };
 
     return (
@@ -417,9 +428,9 @@ ${newHistory}`);
 
                         </div>
 
-                        <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone===false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
-                            {responseDone===true && <FiArrowUp size={16} />}
-                            {responseDone===false && <span className="loading loading-spinner loading-xs"></span>}
+                        <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone === false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
+                            {responseDone === true && <FiArrowUp size={16} />}
+                            {responseDone === false && <span className="loading loading-spinner loading-xs"></span>}
                         </button>
 
                     </div>

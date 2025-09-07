@@ -91,7 +91,7 @@ const Welcoming = ({ userName, setUsername }) => {
                         </div>
                     </div>
 
-                    <div className='flex items-center my-[50dvh] justify-center snap-center snap-always'>
+                    <div className='flex items-center my-[50dvh] justify-center snap-center snap-always w-fit self-center'>
                         <div className="mockup-code w-full rounded-2xl">
                             <pre data-prefix="1">
                                 <code className='text-purple-400'>
