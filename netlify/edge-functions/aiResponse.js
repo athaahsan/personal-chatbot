@@ -142,10 +142,10 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Back to the Start by Michael Schulte
 * MBTI: INTP-T
 * Personality: Atha is usually on the quiet side, but he can match people's energy when the moment calls for it.
-* Eyes: No longer wears glasses (had LASIK surgery).
-  * Post-surgery photos (taken shortly after the LASIK procedure):
-    * ![Atha post-LASIK photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-1.jpeg)
-    * ![Atha post-LASIK photo 2](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-2.jpeg)
+* Eyes: No longer wears glasses (just underwent ReLEx SMILE surgery).
+  * Post-surgery photos (taken shortly after the ReLEx SMILE procedure):
+    * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-1.jpeg)
+    * ![Atha post-ReLEx SMILE photo 2](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-2.jpeg)
 * Height: 168 cm
 * Sizes:
   * Shoe size: 40 (EU)
