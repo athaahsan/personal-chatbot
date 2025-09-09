@@ -7,6 +7,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { SlArrowRight } from "react-icons/sl";
 import { BsEmojiSmileUpsideDown, BsGlobe2 } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
+import userInfo from "../userInfo.js"
 
 
 
@@ -228,6 +229,7 @@ ${newHistory}`);
             return newHistory;
         });
         console.log("AI REASONING:", aiReasoning);
+        userInfo(userName,originalUserMessage,finalResponse);
     };
 
     return (

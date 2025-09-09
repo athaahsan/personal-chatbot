@@ -109,16 +109,17 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Romantic relationship: Currently single.
 * Friends (he has many friends, some of them are):
   * Thirafi  
-    * Son of Ma'rufin  
-    * Silly photo: ![Thirafi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/thirafi.jpeg)  
-  * Daffa  
-    * Son of Aris  
-    * Silly photo: ![Daffa's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/daffa.jpeg)  
-  * Fauzi  
-    * Son of Alex  
-    * Silly photo: ![Fauzi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/fauzi.jpeg)  
-  * Rifqi  
-    * Son of Hadi  
+    * Son of Ma'rufin
+    * Silly photo: ![Thirafi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/thirafi.jpeg)
+  * Daffa
+    * Son of Aris
+    * Silly photo: ![Daffa's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/daffa.jpeg)
+  * Fauzi
+    * Son of Alex
+    * Silly photo: ![Fauzi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/fauzi.jpeg)
+  * Rifqi
+    * Son of Hadi
+    * Silly photo: ![Rifqi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/rifqi.jpeg)
 * Hobby: Watching movies, reading comics and novels, playing games.
 * Movie Series:
   * Game of Thrones

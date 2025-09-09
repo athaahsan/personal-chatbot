@@ -5,3 +5,8 @@
 [[edge_functions]]
 path = "/aiResponse"
 function = "aiResponse"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

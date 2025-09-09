@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
+import { useParams } from "react-router-dom";
 import './App.css'
 
 import UserInput from './components/UserInput';
 import Navbar from './components/Navbar';
 import Chat from './components/Chat';
 import Welcoming from './components/Welcoming';
+import UserChatSupabase from './components/UserChatSupabase';
 import { AnimatePresence, motion } from "framer-motion";
 import { MdOutlineArrowDownward } from "react-icons/md";
+import { Routes, Route } from 'react-router-dom'
 
 
 
@@ -75,51 +78,66 @@ function App() {
 
 
   return (
-    <motion.div
-      initial={{ filter: "blur(10px)" }}
-      animate={{ filter: "blur(0px)" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      <div
-        ref={containerRef}
-        data-theme={theme}
-        className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
-      >
-        <Navbar theme={theme} setTheme={setTheme} />
-        {listMessage.length === 0 && (
-          <Welcoming userName={userName} setUsername={setUserName} />
-        )}
-        {listMessage.length !== 0 && (
-          <Chat listMessage={listMessage} />
-        )}
-        <UserInput
-          ref={inputRef}
-          listMessage={listMessage}
-          setListMessage={setListMessage}
-          userName={userName}
-          setUserName={setUserName}
-          convHistory={convHistory}
-          setConvHistory={setConvHistory}
+    <Routes>
+      <Route path='/' element={
+        <motion.div
+          initial={{ filter: "blur(10px)" }}
+          animate={{ filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <div
+            ref={containerRef}
+            data-theme={theme}
+            className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
+          >
+            <Navbar theme={theme} setTheme={setTheme} />
+            {listMessage.length === 0 && (
+              <Welcoming userName={userName} setUsername={setUserName} />
+            )}
+            {listMessage.length !== 0 && (
+              <Chat listMessage={listMessage} />
+            )}
+            <UserInput
+              ref={inputRef}
+              listMessage={listMessage}
+              setListMessage={setListMessage}
+              userName={userName}
+              setUserName={setUserName}
+              convHistory={convHistory}
+              setConvHistory={setConvHistory}
+            />
+
+            <AnimatePresence>
+              {showScrollBtn && listMessage.length !== 0 && (
+                <motion.button
+                  onClick={scrollToBottom}
+                  style={{ bottom: inputHeight + 16 }}
+                  className="btn btn-circle btn-sm btn-soft btn-primary fixed inset-x-0 mx-auto z-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                >
+                  <MdOutlineArrowDownward size={22} />
+                </motion.button>
+              )}
+            </AnimatePresence>
+
+          </div>
+        </motion.div>
+      } />
+
+      <Route path='/:userId' element={
+        <UserChatSupabase
+          theme={theme}
+          setTheme={setTheme}
+          containerRef={containerRef}
+          showScrollBtn={showScrollBtn}
+          inputHeight={inputHeight}
+          scrollToBottom={scrollToBottom}
         />
-
-        <AnimatePresence>
-          {showScrollBtn && listMessage.length !== 0 && (
-            <motion.button
-              onClick={scrollToBottom}
-              style={{ bottom: inputHeight + 16 }}
-              className="btn btn-circle btn-sm btn-soft btn-primary fixed inset-x-0 mx-auto z-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-            >
-              <MdOutlineArrowDownward size={22} />
-            </motion.button>
-          )}
-        </AnimatePresence>
-
-      </div>
-    </motion.div>
+      } />
+    </Routes>
 
   )
 }
