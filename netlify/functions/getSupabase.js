@@ -22,8 +22,10 @@ export async function handler(event, context) {
         data.forEach(row => {
             const time = new Date(row.created_at).toLocaleTimeString('id-ID', {
                 hour: '2-digit',
-                minute: '2-digit'
-            })
+                minute: '2-digit',
+                timeZone: 'Asia/Jakarta'
+            });
+
             if (row.userMessage) chatArray.push(`${row.userMessage}
 
 (${row.userName}, ${time})`)
