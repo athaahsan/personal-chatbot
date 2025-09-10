@@ -1,5 +1,5 @@
 import React from 'react'
-import profilePic from '../assets/athaPic2.jpeg'
+import profilePic from '../assets/athaPic3.jpg'
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 

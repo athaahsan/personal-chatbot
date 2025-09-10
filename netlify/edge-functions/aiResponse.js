@@ -120,6 +120,12 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Rifqi
     * Son of Hadi
     * Silly photo: ![Rifqi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/rifqi.jpeg)
+* Random group photos:
+  * Atha, Fauzi, Thirafi, and Daffa group selfie: ![Group selfie](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/group-selfie.jpeg)
+  * Only Thirafi and Fauzi are in this photo — Thirafi trying to take a photo of Fauzi in the cubicle: ![Thirafi-fauzi-cubicle](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/thirafi-fauzi.jpeg)
+* Atha random photos:
+  * A selfie he took on campus just after going through a rain only with his hoodie instead of a raincoat: ![atha-rain](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/atha-random1.jpeg)
+  * A selfie he took while on gaming cafe with his friend Awang: ![atha-gaming-cafe](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/atha-random2.jpeg)
 * Hobby: Watching movies, reading comics and novels, playing games.
 * Movie Series:
   * Game of Thrones
