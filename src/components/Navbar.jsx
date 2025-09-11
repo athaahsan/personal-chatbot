@@ -76,7 +76,7 @@ const Navbar = ({ theme, setTheme }) => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu dropdown-content bg-base-100 rounded-lg z-1 mt-4 w-32 join-vertical p-0 border border-base-content/10 before:absolute before:inset-0 before:bg-white/4 before:rounded-lg"
+                            className="menu dropdown-content bg-base-100 rounded-lg z-1 mt-4 w-32 join-vertical p-0 border border-base-content/10 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
                         >
                             {[
                                 "System",
