@@ -321,7 +321,7 @@ ${newHistory}`);
                                 {menu === "main" && (
                                     <ul
                                         tabIndex={0}
-                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
+                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/4 before:rounded-lg"
                                     >
                                         <li
                                             onClick={(e) => {
@@ -366,7 +366,7 @@ ${newHistory}`);
                                 {menu === "responseStyle" && (
                                     <ul
                                         tabIndex={0}
-                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
+                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/4 before:rounded-lg"
                                     >
                                         <li onClick={(e) => {
                                             setResponseStyle("academic");
