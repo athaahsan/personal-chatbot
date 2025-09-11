@@ -21,6 +21,10 @@ export async function handler(event, context) {
         const chatArray = []
         data.forEach(row => {
             const time = new Date(row.created_at).toLocaleTimeString('id-ID', {
+                weekday: 'long',
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
                 timeZone: 'Asia/Jakarta'
@@ -28,7 +32,7 @@ export async function handler(event, context) {
 
             if (row.userMessage) chatArray.push(`${row.userMessage}
 
-(${row.userName}, ${time})`)
+(${row.userName} - ${time})`)
             if (row.aiResponse) chatArray.push(`${row.aiResponse}
 
 (${time})`)
