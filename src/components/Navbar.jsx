@@ -83,9 +83,9 @@ const Navbar = ({ theme, setTheme }) => {
                                 "Light",
                                 "Dark",
                                 "Dim",
-                                "Business",
                                 "Dracula",
-                                "Autumn",
+                                "Business",
+                                "Bumblebee",
                                 "Winter",
                                 "Nord",
                             ].map((item, index, arr) => {
@@ -112,7 +112,7 @@ const Navbar = ({ theme, setTheme }) => {
                                                 className={`min-w-0 w-full font-normal join-item btn btn-ghost ${roundedClass} peer-checked:bg-primary peer-checked:text-primary-content flex justify-between items-center`}
                                             >
                                                 {item}
-                                                {["Light", "Winter", "Nord", "Autumn"].includes(item) && <MdOutlineLightMode />}
+                                                {["Light", "Winter", "Nord", "Bumblebee"].includes(item) && <MdOutlineLightMode />}
                                                 {["Dark", "Dim", "Dracula", "Business"].includes(item) && <MdOutlineDarkMode />}
                                                 {["System"].includes(item) && <FaAdjust />}
                                             </label>
