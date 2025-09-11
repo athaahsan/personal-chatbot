@@ -138,12 +138,12 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
         setResponseDone(false)
         const originalUserMessage = userMessage;
-        console.log("[USER MESSAGE]:", userMessage);
-        console.log("[USER NAME]:", userName);
-        console.log("[RESPONSE STYLE]:", responseStylePrompt);
-        console.log("[TIME NOW]:", timeNow)
-        console.log('[CONVERSATION HISTORY (before)]:\n', convHistory)
-        console.log("Picture (Base64):", imageData);
+        //console.log("[USER MESSAGE]:", userMessage);
+        //console.log("[USER NAME]:", userName);
+        //console.log("[RESPONSE STYLE]:", responseStylePrompt);
+        //console.log("[TIME NOW]:", timeNow)
+        //console.log('[CONVERSATION HISTORY (before)]:\n', convHistory)
+        //console.log("Picture (Base64):", imageData);
         setUserMessage("");
         setImagePreview(null);
         setImageData(null);
@@ -224,11 +224,12 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
     ASSISTANT: "${finalResponse}"
 },
 `;
-            console.log(`[CONVERSATION HISTORY (after)]:
-${newHistory}`);
+
+            //console.log(`[CONVERSATION HISTORY (after)]:
+//${newHistory}`);
             return newHistory;
         });
-        console.log("AI REASONING:", aiReasoning);
+        //console.log("AI REASONING:", aiReasoning);
         userInfo(userName,originalUserMessage,finalResponse);
     };
 
@@ -293,7 +294,7 @@ ${newHistory}`);
                                                 setTimeout(() => setError(""), 3000);
                                                 return;
                                             }
-                                            console.log("Selected file:", file);
+                                            //console.log("Selected file:", file);
                                             setImagePreview(URL.createObjectURL(file));
                                             e.target.value = "";
                                             const reader = new FileReader();

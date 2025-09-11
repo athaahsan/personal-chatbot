@@ -14,8 +14,19 @@ import { Routes, Route } from 'react-router-dom'
 
 
 function App() {
-  const hope = `May God give me strength to let her go.`;
-  console.log(hope);
+  useEffect(() => {
+    console.log(`
+May God give me ignorance to never know when she's finally with someone else.
+
+May God give me blindness to never see her smile for someone else.
+
+May God give me forgetfulness to not remember the sweet memories we once shared.
+
+May God give me strength to let her go.
+
+And God, if I'm meant to be alone, please take away my desire to feel loved.
+`);
+  }, []);
 
   const [listMessage, setListMessage] = useState([]);
   const [convHistory, setConvHistory] = useState(``)
