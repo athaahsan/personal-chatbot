@@ -25,8 +25,6 @@ May God give me deafness when it comes to hearing her affectionate words for som
 May God give me forgetfulness when it comes to remembering the sweet memories I once shared with her.
 
 May God give me strength to let her go.
-
-And God, if I'm meant to be alone, please take away my desire to feel loved.
 `);
   }, []);
 
