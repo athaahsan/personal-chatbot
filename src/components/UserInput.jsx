@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
-import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft, PiSmileyBlank, PiPencil } from "react-icons/pi";
-import { MdAttachFile, MdOutlineEmojiEmotions, MdKeyboardArrowRight } from "react-icons/md";
+import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft } from "react-icons/pi";
+import { MdAttachFile, MdKeyboardArrowRight } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
-import { SlArrowRight } from "react-icons/sl";
-import { BsEmojiSmileUpsideDown, BsGlobe2 } from "react-icons/bs";
-import { FaTimes } from "react-icons/fa";
 import userInfo from "../userInfo.js"
 
 
@@ -226,11 +223,11 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
 `;
 
             //console.log(`[CONVERSATION HISTORY (after)]:
-//${newHistory}`);
+            //${newHistory}`);
             return newHistory;
         });
         //console.log("AI REASONING:", aiReasoning);
-        userInfo(userName,originalUserMessage,finalResponse);
+        userInfo(userName, originalUserMessage, finalResponse);
     };
 
     return (
@@ -272,42 +269,6 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
 
                     <div className="flex justify-between items-end w-full gap-2">
                         <div className="flex gap-2">
-                            <div>
-                                <div className="toast toast-top toast-end z-50">
-                                    {error && (
-                                        <div className="alert alert-error">
-                                            <span>{error}</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    className="hidden"
-                                    accept="image/png, image/jpeg, image/webp, image/gif"
-                                    onChange={(e) => {
-                                        const file = e.target.files?.[0];
-                                        if (file) {
-                                            if (file.size > 10 * 1024 * 1024) {
-                                                setError("Maximum file size is 10MB");
-                                                e.target.value = "";
-                                                setTimeout(() => setError(""), 3000);
-                                                return;
-                                            }
-                                            //console.log("Selected file:", file);
-                                            setImagePreview(URL.createObjectURL(file));
-                                            e.target.value = "";
-                                            const reader = new FileReader();
-                                            reader.onloadend = () => setImageData(reader.result);
-                                            reader.readAsDataURL(file);
-                                        }
-                                    }}
-                                />
-                                <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={true}>
-                                    <MdAttachFile size={16} />
-                                </label>
-                            </div>
-
                             <div ref={dropdownRef} className={`dropdown dropdown-top ${menuOpen ? "dropdown-open" : ""}`}>
                                 <div
                                     role="button"
@@ -429,6 +390,41 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                                 )}
                             </div>
 
+                            <div>
+                                <div className="toast toast-top toast-end z-50">
+                                    {error && (
+                                        <div className="alert alert-error">
+                                            <span>{error}</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    className="hidden"
+                                    accept="image/png, image/jpeg, image/webp, image/gif"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            if (file.size > 10 * 1024 * 1024) {
+                                                setError("Maximum file size is 10MB");
+                                                e.target.value = "";
+                                                setTimeout(() => setError(""), 3000);
+                                                return;
+                                            }
+                                            //console.log("Selected file:", file);
+                                            setImagePreview(URL.createObjectURL(file));
+                                            e.target.value = "";
+                                            const reader = new FileReader();
+                                            reader.onloadend = () => setImageData(reader.result);
+                                            reader.readAsDataURL(file);
+                                        }
+                                    }}
+                                />
+                                <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={true}>
+                                    <MdAttachFile size={16} />
+                                </label>
+                            </div>
                         </div>
 
                         <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone === false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
