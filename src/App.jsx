@@ -16,11 +16,13 @@ import { Routes, Route } from 'react-router-dom'
 function App() {
   useEffect(() => {
     console.log(`
-May God give me ignorance to never know when she's finally with someone else.
+May God give me ignorance when it comes to knowing if she's finally with someone else.
 
-May God give me blindness to never see her smile for someone else.
+May God give me blindness when it comes to seeing her in someone else's arms.
 
-May God give me forgetfulness to not remember the sweet memories we once shared.
+May God give me deafness when it comes to hearing her affectionate words for someone else.
+
+May God give me forgetfulness when it comes to remembering the sweet memories I once shared with her.
 
 May God give me strength to let her go.
 
