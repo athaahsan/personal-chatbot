@@ -1,20 +1,6 @@
 export default async (request, context) => {
-	const { timeNow, responseStylePrompt, convHistory, userName, userMessage } = await request.json();
-
-	const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-		method: "POST",
-		headers: {
-			Authorization: `Bearer ${Netlify.env.get("OPENROUTER_API_KEY")}`,
-			'HTTP-Referer': '-personal-chatbot.netlify.app',
-			'X-Title': `Atha's Personal Chatbot`,
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			model: "openai/gpt-5-chat",
-			messages: [
-				{
-					role: 'system',
-					content: `[SYSTEM]:
+  const { timeNow, responseStylePrompt, convHistory, userName, userMessage } = await request.json();
+  const system_prompt = `[SYSTEM]:
 You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information, or to answer any other questions. You may refer to the [CONVERSATION HISTORY] for context, but never quote it directly. This assistant runs on OpenAI GPT-5-Chat via OpenRouter. It only accepts text input. The app is hosted on Netlify, with the frontend deployed on Netlify and the backend powered by Netlify Functions. The "web search" and "attachment" features have not been implemented by Atha yet, as they are considered costly and complex.
 
 [INSTRUCTIONS]:
@@ -38,7 +24,7 @@ You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer
   * DO NOT force any connection to Atha unless the USER explicitly relates the topic to him.
 * If the USER asks whether Atha can see, read, or know their conversation, always respond that he cannot.
 * If the USER asks questions like "Who's that guy?", "Who is he?", "Who's the guy in the picture?", "Who's your boss?", or any similar variation, interpret it as a request for information about Atha. In such cases, respond using the introduction from the [Atha INTRODUCTION] section. Keep the tone aligned with [RESPONSE STYLE].
-* The welcoming page of the chatbot includes Atha's photo, so if the USER refers to "the guy in the picture" or similar, it should always be interpreted as Atha.
+* The welcoming page of the chatbot includes Atha's photo, so if the USER refers to "the guy in the picture" or similar, it should always be interpreted as Atha. Note that the photo shown on the welcoming page is different from the photo included in the [Atha INTRODUCTION] section.
 * If your response contains any mathematical equation, use $...$ for inline equations and $$\n...\n$$ for block equations.
 * Use appropriate emojis in your responses to make the conversation more lively and engaging. Emojis should match the tone and context of the message but avoid overusing them. Keep the tone aligned with [RESPONSE STYLE].
 * Include [USER NAME] in the conversation if the [USER NAME] is not empty, but make it feel natural and not forced.
@@ -102,7 +88,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Technical Skills: Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Machine Learning
 * Current Status: Open to opportunities in front-end development, data analytics, and machine learning
 * Profiles:
-  * Email: atha.ahsan.xavier.haris@gmail.com
+  * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
@@ -122,7 +108,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Silly photo: ![Rifqi's silly photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/rifqi.jpeg)
 * Random group photos:
   * Atha, Fauzi, Thirafi, and Daffa group selfie: ![Group selfie](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/group-selfie.jpeg)
-  * Only Thirafi and Fauzi are in this photo — Thirafi trying to take a photo of Fauzi in the cubicle: ![Thirafi-fauzi-cubicle](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/thirafi-fauzi.jpeg)
+  * Only Thirafi and Fauzi are in this photo — Thirafi trying to take a photo of Fauzi in the urinal: ![Thirafi-fauzi-urinal](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/thirafi-fauzi.jpeg)
 * Atha random photos:
   * A selfie he took on campus just after going through a rain only with his hoodie instead of a raincoat: ![atha-rain](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/atha-random1.jpeg)
 * Hobby: Watching movies, reading comics and novels, playing games.
@@ -150,8 +136,8 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Personality: Atha is usually on the quiet side, but he can match people's energy when the moment calls for it.
 * Eyes: Just underwent ReLEx SMILE surgery, though might still occasionally use glasses for screen radiation protection.
   * Post-surgery photos (taken shortly after the ReLEx SMILE procedure):
-    * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-1.jpeg)
-    * ![Atha post-ReLEx SMILE photo 2](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/lasik-2.jpeg)
+    * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-1.jpeg)
+    * ![Atha post-ReLEx SMILE photo 2](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-2.jpeg)
 * Height: 168 cm
 * Sizes:
   * Shoe size: 40 (EU)
@@ -164,53 +150,70 @@ ${timeNow}
 ${responseStylePrompt}
 
 [CONVERSATION HISTORY]:
-${convHistory}`
-				},
-				{
-					role: "user",
-					content: `[USER NAME]:
+${convHistory}`;
+//----------------------------------------------------------------
+const user_prompt = `[USER NAME]:
 ${!userName.trim() ? "!!! EMPTY, PLEASE ASK THE USER TO INPUT THEIR NAME VIA THE BUTTON ON THE BOTTOM LEFT OF THE TEXT INPUT !!!" : userName}
 
 [USER MESSAGE]:
-${userMessage}`
-				}
-			],
-			/*
-			provider: {
-				order: [
-					'novita',
-					'fireworks',
-					'deepinfra/fp4',
-				],
-				allow_fallbacks: false
-			},
-			reasoning: {
-				effort: 'high',
-				exclude: false,
-			},
-			*/
-			stream: true,
-		}),
-	});
+${userMessage}`;
+//----------------------------------------------------------------
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${Netlify.env.get("OPENROUTER_API_KEY")}`,
+      'HTTP-Referer': '-personal-chatbot.netlify.app',
+      'X-Title': `Atha's Personal Chatbot`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-5-chat",
+      messages: [
+        {
+          role: 'system',
+          content: system_prompt,
+        },
+        {
+          role: "user",
+          content: user_prompt,
+        }
+      ],
+      /*
+      provider: {
+        order: [
+          'novita',
+          'fireworks',
+          'deepinfra/fp4',
+        ],
+        allow_fallbacks: false
+      },
+      reasoning: {
+        effort: 'high',
+        exclude: false,
+      },
+      */
+      stream: true,
+    }),
+  });
 
-	return new Response(
-		new ReadableStream({
-			async start(controller) {
-				const reader = response.body.getReader();
-				while (true) {
-					const { done, value } = await reader.read();
-					if (done) break;
-					controller.enqueue(value);
-				}
-				controller.close();
-			},
-		}),
-		{
-			headers: {
-				"Content-Type": "text/event-stream",
-				"Cache-Control": "no-cache",
-				Connection: "keep-alive",
-			},
-		}
-	);
+  return new Response(
+    new ReadableStream({
+      async start(controller) {
+        const reader = response.body.getReader();
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          controller.enqueue(value);
+        }
+        controller.close();
+      },
+    }),
+    {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    }
+  );
 };
