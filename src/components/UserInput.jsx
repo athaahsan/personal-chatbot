@@ -269,6 +269,41 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
 
                     <div className="flex justify-between items-end w-full gap-2">
                         <div className="flex gap-2">
+                            <div>
+                                <div className="toast toast-top toast-end z-50">
+                                    {error && (
+                                        <div className="alert alert-error">
+                                            <span>{error}</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    className="hidden"
+                                    accept="image/png, image/jpeg, image/webp, image/gif"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            if (file.size > 10 * 1024 * 1024) {
+                                                setError("Maximum file size is 10MB");
+                                                e.target.value = "";
+                                                setTimeout(() => setError(""), 3000);
+                                                return;
+                                            }
+                                            //console.log("Selected file:", file);
+                                            setImagePreview(URL.createObjectURL(file));
+                                            e.target.value = "";
+                                            const reader = new FileReader();
+                                            reader.onloadend = () => setImageData(reader.result);
+                                            reader.readAsDataURL(file);
+                                        }
+                                    }}
+                                />
+                                <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={true}>
+                                    <MdAttachFile size={16} />
+                                </label>
+                            </div>
                             <div ref={dropdownRef} className={`dropdown dropdown-top ${menuOpen ? "dropdown-open" : ""}`}>
                                 <div
                                     role="button"
@@ -388,42 +423,6 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                                         </li>
                                     </ul>
                                 )}
-                            </div>
-
-                            <div>
-                                <div className="toast toast-top toast-end z-50">
-                                    {error && (
-                                        <div className="alert alert-error">
-                                            <span>{error}</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    className="hidden"
-                                    accept="image/png, image/jpeg, image/webp, image/gif"
-                                    onChange={(e) => {
-                                        const file = e.target.files?.[0];
-                                        if (file) {
-                                            if (file.size > 10 * 1024 * 1024) {
-                                                setError("Maximum file size is 10MB");
-                                                e.target.value = "";
-                                                setTimeout(() => setError(""), 3000);
-                                                return;
-                                            }
-                                            //console.log("Selected file:", file);
-                                            setImagePreview(URL.createObjectURL(file));
-                                            e.target.value = "";
-                                            const reader = new FileReader();
-                                            reader.onloadend = () => setImageData(reader.result);
-                                            reader.readAsDataURL(file);
-                                        }
-                                    }}
-                                />
-                                <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={true}>
-                                    <MdAttachFile size={16} />
-                                </label>
                             </div>
                         </div>
 
