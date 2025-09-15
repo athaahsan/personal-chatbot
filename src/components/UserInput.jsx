@@ -156,13 +156,14 @@ const UserInput = forwardRef(({
         setUserMessage("");
         setImagePreview(null);
         setImageData(null);
+        
+        setListMessage(prev => [...prev, originalUserMessage, '']);
+        setListImagePreview(prev => [...prev, originalImagePreview, null]);
         const imageLink = originalImageData
             ? await imageToURL(originalImageData)
             : null;
         const newListImageData = [...listImageData, imageLink, null];
-        setListImageData(newListImageData); 
-        setListMessage(prev => [...prev, originalUserMessage, '']);
-        setListImagePreview(prev => [...prev, originalImagePreview, null]);
+        setListImageData(newListImageData);
         //console.log("Image Link:", imageLink);
         //console.log("[USER MESSAGE]:", userMessage);
         //console.log("[USER NAME]:", userName);
