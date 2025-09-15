@@ -21,6 +21,7 @@ const UserInput = forwardRef(({
     setListImagePreview,
     listImageData,
     setListImageData,
+    setShowChat,
 }, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
@@ -147,6 +148,7 @@ const UserInput = forwardRef(({
 
     const handleSend = async () => {
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
+        setShowChat(true);
         setResponseDone(false)
         const originalUserMessage = userMessage;
         const originalImagePreview = imagePreview;

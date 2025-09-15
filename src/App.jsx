@@ -31,6 +31,7 @@ May God give me strength to let her go.
   const [listImagePreview, setListImagePreview] = useState([]);
   const [listImageData, setListImageData] = useState([]);
   const [convHistory, setConvHistory] = useState(``)
+  const [showChat, setShowChat] = useState(false);
 
   const [userName, setUserName] = useState(() => {
     return localStorage.getItem("userName") || "";
@@ -103,10 +104,10 @@ May God give me strength to let her go.
             className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
           >
             <Navbar theme={theme} setTheme={setTheme} />
-            {listMessage.length === 0 && (
+            {!showChat && (
               <Welcoming userName={userName} setUsername={setUserName} />
             )}
-            {listMessage.length !== 0 && listImageData.length !== 0 && (
+            {showChat && (
               <Chat listMessage={listMessage} listImagePreview={listImagePreview} />
             )}
             <UserInput
@@ -121,6 +122,7 @@ May God give me strength to let her go.
               setUserName={setUserName}
               convHistory={convHistory}
               setConvHistory={setConvHistory}
+              setShowChat={setShowChat}
             />
 
             <AnimatePresence>
