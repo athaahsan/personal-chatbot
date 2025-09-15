@@ -9,7 +9,7 @@ import { FaAdjust } from "react-icons/fa";
 const Navbar = ({ theme, setTheme }) => {
     return (
         <>
-            <div className="sticky top-0 navbar bg-base-200/80 backdrop-blur-lg z-50">
+            <div className="sticky top-0 navbar bg-base-300/90 backdrop-blur-md z-50">
                 <div className="navbar-start gap-5 ml-2 sm:ml-4">
                     <a
                         href="https://github.com/athaahsan/personal-chatbot"
@@ -85,7 +85,7 @@ const Navbar = ({ theme, setTheme }) => {
                                 "Dim",
                                 "Dracula",
                                 "Business",
-                                "Emerald",
+                                "Cupcake",
                                 "Winter",
                                 "Nord",
                             ].map((item, index, arr) => {
@@ -112,7 +112,7 @@ const Navbar = ({ theme, setTheme }) => {
                                                 className={`min-w-0 w-full font-normal join-item btn btn-ghost ${roundedClass} peer-checked:bg-primary peer-checked:text-primary-content flex justify-between items-center`}
                                             >
                                                 {item}
-                                                {["Light", "Winter", "Nord", "Emerald"].includes(item) && <MdOutlineLightMode />}
+                                                {["Light", "Winter", "Nord", "Cupcake"].includes(item) && <MdOutlineLightMode />}
                                                 {["Dark", "Dim", "Dracula", "Business"].includes(item) && <MdOutlineDarkMode />}
                                                 {["System"].includes(item) && <FaAdjust />}
                                             </label>

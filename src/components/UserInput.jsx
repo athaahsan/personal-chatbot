@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
+import imageCompression from "browser-image-compression";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
 import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft } from "react-icons/pi";
@@ -152,13 +153,30 @@ const UserInput = forwardRef(({
         setResponseDone(false)
         const originalUserMessage = userMessage;
         const originalImagePreview = imagePreview;
-        const originalImageData = imageData;
+        const imageData2 = imageData;
+        let originalImageData = null;
+
         setUserMessage("");
         setImagePreview(null);
         setImageData(null);
-        
+
         setListMessage(prev => [...prev, originalUserMessage, '']);
         setListImagePreview(prev => [...prev, originalImagePreview, null]);
+
+        if (imageData2) {
+            try {
+                const options = {
+                    maxSizeMB: 0.1,
+                    maxWidthOrHeight: 1280,
+                    useWebWorker: true,
+                };
+                originalImageData = await imageCompression(imageData2, options);
+                console.log("Compressed image size:", (originalImageData.size / 1024).toFixed(2), "KB");
+            } catch (err) {
+                console.error("Image compression failed:", err);
+                originalImageData = imageData2;
+            }
+        }
         const imageLink = originalImageData
             ? await imageToURL(originalImageData)
             : null;
@@ -295,8 +313,8 @@ const UserInput = forwardRef(({
                     </motion.div>
                 </AnimatePresence>
             )}
-            <div className="m-0 p-0 max-w-3xl mx-auto bg-white/20 rounded-xl">
-                <div className="flex max-w-3xl mx-auto bg-base-100/80 backdrop-blur-lg p-3 rounded-xl gap-2 flex-col border border-base-content/10">
+            <div className="m-0 p-0 max-w-3xl mx-auto bg-white/10 rounded-xl">
+                <div className="flex max-w-3xl mx-auto bg-base-100/90 backdrop-blur-md p-3 rounded-xl gap-2 flex-col border border-base-content/10">
                     <AnimatePresence>
                         {imagePreview && (
                             <motion.div

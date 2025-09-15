@@ -12,7 +12,6 @@ import { LiaTimesSolid } from "react-icons/lia";
 
 const Chat = ({ listMessage, listImagePreview }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log("listImagePreview in Chat.jsx", listImagePreview);
 
   return (
     <div className='px-5.5 flex-1'>
@@ -98,7 +97,7 @@ const Chat = ({ listMessage, listImagePreview }) => {
                       </div>
                     )}
                     {msg &&
-                    <div className='wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/8 rounded-2xl flex justify-end w-fit'>
+                    <div className='wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/10 rounded-2xl flex justify-end w-fit'>
                       <div className='whitespace-pre-wrap'>
                         {msg}
                       </div>

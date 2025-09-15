@@ -101,7 +101,7 @@ May God give me strength to let her go.
           <div
             ref={containerRef}
             data-theme={theme}
-            className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
+            className="bg-base-300 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
           >
             <Navbar theme={theme} setTheme={setTheme} />
             {!showChat && (
