@@ -1,6 +1,4 @@
-import React from 'react'
-
-const userInfo = async (userName,userMessage,aiResponse) => {
+const userInfo = async (userName,userMessage,aiResponse,imageLink) => {
   try {
     // 1. Generate unique user ID
     let newUser = false;
@@ -53,6 +51,7 @@ const userInfo = async (userName,userMessage,aiResponse) => {
       batteryLevel,
       localTime,
       timezone,
+      imageLink,
     };
 
     // 7. Kirim ke backend Netlify Function (supabase)

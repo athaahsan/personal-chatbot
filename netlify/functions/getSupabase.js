@@ -9,7 +9,7 @@ export async function handler(event, context) {
         const { userId } = JSON.parse(event.body)
         const { data, error } = await supabase
             .from('userInfo_personalChatbot')
-            .select('userName, userMessage, aiResponse, created_at')
+            .select('userName, userMessage, aiResponse, created_at, imageLink')
             .eq('userId', userId)
             .order('created_at', { ascending: true })
         if (error) {
@@ -19,6 +19,7 @@ export async function handler(event, context) {
             }
         }
         const chatArray = []
+        const imagePreviews = [];
         data.forEach(row => {
             const time = new Date(row.created_at).toLocaleTimeString('id-ID', {
                 weekday: 'long',
@@ -29,18 +30,35 @@ export async function handler(event, context) {
                 minute: '2-digit',
                 timeZone: 'Asia/Jakarta'
             });
+            if (row.imageLink) {
+                imagePreviews.push(row.imageLink);
+                imagePreviews.push(null);
+            } else {
+                imagePreviews.push(null);
+                imagePreviews.push(null);
+            }
 
-            if (row.userMessage) chatArray.push(`${row.userMessage}
+            if (row.userMessage) {
+                chatArray.push(`${row.userMessage}
 
-(${row.userName} - ${time})`)
-            if (row.aiResponse) chatArray.push(`${row.aiResponse}
+(${row.userName} - ${time})`);
 
-(${time})`)
+            } else {
+                chatArray.push(null);
+            }
+
+            if (row.aiResponse) {
+                chatArray.push(`${row.aiResponse}
+
+(${time})`);
+            } else {
+                chatArray.push(null);
+            }
         })
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ chat: chatArray })
+            body: JSON.stringify({ chat: chatArray, imagePreviews: imagePreviews }),
         }
     } catch (err) {
         return {

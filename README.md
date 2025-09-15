@@ -5,7 +5,7 @@ A personal assistant chatbot that can answer questions about Atha Ahsan Xavier H
 ## Features
 
 - **Personal Q&A**: Provides detailed answers about Atha's background, education, projects, and interests.
-- **General Information**: Capable of answering various general knowledge questions.
+- **Any Topic**: Capable of answering all kinds of questions beyond Atha.
 - **Responsive Interface**: User-friendly and responsive design for smooth interaction.
 
 ## Technologies Used

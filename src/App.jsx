@@ -28,6 +28,8 @@ May God give me strength to let her go.
   }, []);
 
   const [listMessage, setListMessage] = useState([]);
+  const [listImagePreview, setListImagePreview] = useState([]);
+  const [listImageData, setListImageData] = useState([]);
   const [convHistory, setConvHistory] = useState(``)
 
   const [userName, setUserName] = useState(() => {
@@ -104,13 +106,17 @@ May God give me strength to let her go.
             {listMessage.length === 0 && (
               <Welcoming userName={userName} setUsername={setUserName} />
             )}
-            {listMessage.length !== 0 && (
-              <Chat listMessage={listMessage} />
+            {listMessage.length !== 0 && listImageData.length !== 0 && (
+              <Chat listMessage={listMessage} listImagePreview={listImagePreview} />
             )}
             <UserInput
               ref={inputRef}
               listMessage={listMessage}
               setListMessage={setListMessage}
+              listImagePreview={listImagePreview}
+              setListImagePreview={setListImagePreview}
+              listImageData={listImageData}
+              setListImageData={setListImageData}
               userName={userName}
               setUserName={setUserName}
               convHistory={convHistory}

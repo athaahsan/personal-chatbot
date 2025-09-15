@@ -5,11 +5,23 @@ import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft } fro
 import { MdAttachFile, MdKeyboardArrowRight } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
 import userInfo from "../userInfo.js"
+import imageToURL from "../imageToURL.js";
 
 
 
 
-const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessage, convHistory, setConvHistory }, ref) => {
+const UserInput = forwardRef(({
+    userName,
+    setUserName,
+    setListMessage,
+    listMessage,
+    convHistory,
+    setConvHistory,
+    listImagePreview,
+    setListImagePreview,
+    listImageData,
+    setListImageData,
+}, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
     const [placeholder, setPlaceholder] = useState("");
@@ -130,21 +142,34 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
 
     const [responseDone, setResponseDone] = useState(true);
     const [responseThinking, setResponseThinking] = useState(false)
+    const [selectedImage, setSelectedImage] = useState(null);
+
 
     const handleSend = async () => {
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
         setResponseDone(false)
         const originalUserMessage = userMessage;
+        const originalImagePreview = imagePreview;
+        const originalImageData = imageData;
+        setUserMessage("");
+        setImagePreview(null);
+        setImageData(null);
+        const imageLink = originalImageData
+            ? await imageToURL(originalImageData)
+            : null;
+        const newListImageData = [...listImageData, imageLink, null];
+        setListImageData(newListImageData); 
+        setListMessage(prev => [...prev, originalUserMessage, '']);
+        setListImagePreview(prev => [...prev, originalImagePreview, null]);
+        //console.log("Image Link:", imageLink);
         //console.log("[USER MESSAGE]:", userMessage);
         //console.log("[USER NAME]:", userName);
         //console.log("[RESPONSE STYLE]:", responseStylePrompt);
         //console.log("[TIME NOW]:", timeNow)
         //console.log('[CONVERSATION HISTORY (before)]:\n', convHistory)
         //console.log("Picture (Base64):", imageData);
-        setUserMessage("");
-        setImagePreview(null);
-        setImageData(null);
-        setListMessage(prev => [...prev, originalUserMessage, '']);
+        //console.log("List Image Preview:", listImagePreview);
+        //console.log("List Image Data:", listImageData);
         const response = await fetch("/aiResponse", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -154,6 +179,8 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                 convHistory,
                 userName,
                 userMessage: originalUserMessage,
+                listImageData: newListImageData,
+                imageLink,
             }),
         });
         let finalResponse = "";
@@ -227,11 +254,44 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
             return newHistory;
         });
         //console.log("AI REASONING:", aiReasoning);
-        userInfo(userName, originalUserMessage, finalResponse);
+        userInfo(userName, originalUserMessage, finalResponse, imageLink);
     };
 
     return (
         <div className="sticky bottom-0 left-0 w-full px-2 pb-2 z-100" ref={ref}>
+            {selectedImage && (
+                <AnimatePresence>
+                    <motion.div
+                        key="overlay"
+                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-500"
+                        onClick={() => setSelectedImage(null)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <motion.div
+                            key="image"
+                            className="relative"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                        >
+                            <img
+                                src={selectedImage}
+                                alt="full"
+                                className="max-h-[90dvh] max-w-[90dvw] h-[90dvh] w-[90dvw] object-contain"
+                            />
+                            <button
+                                onClick={() => setSelectedImage(null)}
+                                className="absolute top-0 right-0 border border-base-content/10 bg-error text-error-content rounded-none w-6 h-6 flex items-center justify-center"
+                            >
+                                <LiaTimesSolid size={16} style={{ strokeWidth: 1 }} />
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                </AnimatePresence>
+            )}
             <div className="m-0 p-0 max-w-3xl mx-auto bg-white/20 rounded-xl">
                 <div className="flex max-w-3xl mx-auto bg-base-100/80 backdrop-blur-lg p-3 rounded-xl gap-2 flex-col border border-base-content/10">
                     <AnimatePresence>
@@ -243,11 +303,19 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                                 transition={{ duration: 0.25, ease: "easeInOut" }}
                                 className="relative w-24 h-24"
                             >
-                                <img src={imagePreview} alt="preview" loading="lazy" className="w-24 h-24 object-cover rounded-xl border border-base-content/10" />
+                                <img
+                                    src={imagePreview}
+                                    alt="preview"
+                                    loading="lazy"
+                                    onClick={() => setSelectedImage(imagePreview)}
+                                    className="w-24 h-24 object-cover rounded-xl border border-base-content/10 cursor-pointer" />
                                 <button
                                     type="button"
-                                    onClick={() => setImagePreview(null)}
-                                    className="absolute top-1 right-1 border border-base-content/10 cursor-pointer bg-base-300 text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                                    onClick={() => {
+                                        setImagePreview(null);
+                                        setImageData(null);
+                                    }}
+                                    className="absolute top-1 right-1 border border-base-content/10 cursor-pointer bg-error text-error-content text-xs rounded-full w-5 h-5 flex items-center justify-center"
                                 >
                                     <LiaTimesSolid size={12} style={{ strokeWidth: 1 }} />
                                     <span className="absolute inset-[-6px]" />
@@ -269,41 +337,6 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
 
                     <div className="flex justify-between items-end w-full gap-2">
                         <div className="flex gap-2">
-                            <div>
-                                <div className="toast toast-top toast-end z-50">
-                                    {error && (
-                                        <div className="alert alert-error">
-                                            <span>{error}</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    className="hidden"
-                                    accept="image/png, image/jpeg, image/webp, image/gif"
-                                    onChange={(e) => {
-                                        const file = e.target.files?.[0];
-                                        if (file) {
-                                            if (file.size > 10 * 1024 * 1024) {
-                                                setError("Maximum file size is 10MB");
-                                                e.target.value = "";
-                                                setTimeout(() => setError(""), 3000);
-                                                return;
-                                            }
-                                            //console.log("Selected file:", file);
-                                            setImagePreview(URL.createObjectURL(file));
-                                            e.target.value = "";
-                                            const reader = new FileReader();
-                                            reader.onloadend = () => setImageData(reader.result);
-                                            reader.readAsDataURL(file);
-                                        }
-                                    }}
-                                />
-                                <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={true}>
-                                    <MdAttachFile size={16} />
-                                </label>
-                            </div>
                             <div ref={dropdownRef} className={`dropdown dropdown-top ${menuOpen ? "dropdown-open" : ""}`}>
                                 <div
                                     role="button"
@@ -423,6 +456,34 @@ const UserInput = forwardRef(({ userName, setUserName, setListMessage, listMessa
                                         </li>
                                     </ul>
                                 )}
+                            </div>
+                            <div>
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    className="hidden"
+                                    accept="image/png, image/jpeg, image/webp, image/gif"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            if (file.size > 10 * 1024 * 1024) {
+                                                setError("Maximum file size is 10MB");
+                                                e.target.value = "";
+                                                setTimeout(() => setError(""), 3000);
+                                                return;
+                                            }
+                                            //console.log("Selected file:", file);
+                                            setImagePreview(URL.createObjectURL(file));
+                                            e.target.value = "";
+                                            setImageData(file);
+                                        }
+                                    }}
+                                />
+                                <div className={`${!error ? "" : "tooltip tooltip-right tooltip-error tooltip-open"}`} data-tip={error}>
+                                    <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={false}>
+                                        <MdAttachFile size={16} />
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
