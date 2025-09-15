@@ -171,7 +171,7 @@ const UserInput = forwardRef(({
                     useWebWorker: true,
                 };
                 originalImageData = await imageCompression(imageData2, options);
-                console.log("Compressed image size:", (originalImageData.size / 1024).toFixed(2), "KB");
+                //console.log("Compressed image size:", (originalImageData.size / 1024).toFixed(2), "KB");
             } catch (err) {
                 console.error("Image compression failed:", err);
                 originalImageData = imageData2;
@@ -313,8 +313,8 @@ const UserInput = forwardRef(({
                     </motion.div>
                 </AnimatePresence>
             )}
-            <div className="m-0 p-0 max-w-3xl mx-auto bg-white/10 rounded-xl">
-                <div className="flex max-w-3xl mx-auto bg-base-100/90 backdrop-blur-md p-3 rounded-xl gap-2 flex-col border border-base-content/10">
+            <div className="m-0 p-0 max-w-3xl mx-auto bg-white/20 rounded-xl">
+                <div className="flex max-w-3xl mx-auto bg-base-100/80 backdrop-blur-lg p-3 rounded-xl gap-2 flex-col border border-base-content/10 shadow-lg">
                     <AnimatePresence>
                         {imagePreview && (
                             <motion.div
@@ -372,7 +372,7 @@ const UserInput = forwardRef(({
                                 {menu === "main" && (
                                     <ul
                                         tabIndex={0}
-                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
+                                        className="shadow-lg dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
                                     >
                                         <li
                                             onClick={(e) => {
@@ -417,7 +417,7 @@ const UserInput = forwardRef(({
                                 {menu === "responseStyle" && (
                                     <ul
                                         tabIndex={0}
-                                        className="dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
+                                        className="shadow-lg dropdown-content menu bg-base-100 rounded-lg z-1 w-72 p-1 border border-base-content/10 mb-2 before:absolute before:inset-0 before:bg-white/2 before:rounded-lg"
                                     >
                                         <li onClick={(e) => {
                                             setResponseStyle("academic");
