@@ -167,7 +167,7 @@ const UserInput = forwardRef(({
             try {
                 const options = {
                     maxSizeMB: 0.1,
-                    maxWidthOrHeight: 1280,
+                    maxWidthOrHeight: 1024,
                     initialQuality: 0.5,
                     useWebWorker: true,
                 };
