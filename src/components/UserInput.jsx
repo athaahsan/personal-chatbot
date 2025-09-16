@@ -168,6 +168,7 @@ const UserInput = forwardRef(({
                 const options = {
                     maxSizeMB: 0.1,
                     maxWidthOrHeight: 1280,
+                    initialQuality: 0.5,
                     useWebWorker: true,
                 };
                 originalImageData = await imageCompression(imageData2, options);
