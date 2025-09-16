@@ -1,7 +1,7 @@
 export default async (request, context) => {
   const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink } = await request.json();
   const mappedListImageData = (imageLink !== null
-    ? listImageData.slice(0, -1)
+    ? listImageData.slice(0, -2)
     : listImageData
   )
     .filter(Boolean)

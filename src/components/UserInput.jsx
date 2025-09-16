@@ -183,6 +183,7 @@ const UserInput = forwardRef(({
             : null;
         const newListImageData = [...listImageData, imageLink, null];
         setListImageData(newListImageData);
+        //console.log("New List Image Data:", newListImageData);
         //console.log("Image Link:", imageLink);
         //console.log("[USER MESSAGE]:", userMessage);
         //console.log("[USER NAME]:", userName);
