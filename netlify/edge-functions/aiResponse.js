@@ -10,7 +10,7 @@ export default async (request, context) => {
       image_url: { url: data },
     }));
 
-  const imageHistory = listImageData.length > 0
+  const imageHistory = mappedListImageData.length > 0
     ? [
       {
         type: 'text',
