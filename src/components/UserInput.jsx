@@ -168,7 +168,7 @@ const UserInput = forwardRef(({
                 const options = {
                     maxSizeMB: 1,
                     maxWidthOrHeight: 1280,
-                    initialQuality: 0.8,
+                    initialQuality: 0.9,
                     fileType: 'image/jpeg',
                     useWebWorker: true,
                 };
