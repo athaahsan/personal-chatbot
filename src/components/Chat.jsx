@@ -40,7 +40,7 @@ const Chat = ({ listMessage, listImagePreview }) => {
               />
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-0 right-0 border border-base-content/10 bg-error text-error-content rounded-none w-6 h-6 flex items-center justify-center"
+                className="hover:cursor-pointer absolute top-0 right-0 border border-base-content/10 bg-error text-error-content rounded-none w-6 h-6 flex items-center justify-center"
               >
                 <LiaTimesSolid size={16} style={{ strokeWidth: 1 }} />
               </button>
