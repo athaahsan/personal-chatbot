@@ -166,8 +166,8 @@ const UserInput = forwardRef(({
         if (imageData2) {
             try {
                 const options = {
-                    maxSizeMB: 0.1,
-                    maxWidthOrHeight: 1280,
+                    maxSizeMB: 0.2,
+                    maxWidthOrHeight: 1024,
                     initialQuality: 0.5,
                     useWebWorker: true,
                 };
