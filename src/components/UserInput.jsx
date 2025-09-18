@@ -166,9 +166,10 @@ const UserInput = forwardRef(({
         if (imageData2) {
             try {
                 const options = {
-                    maxSizeMB: 0.2,
-                    maxWidthOrHeight: 1024,
-                    initialQuality: 0.5,
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1280,
+                    initialQuality: 0.8,
+                    fileType: 'image/jpeg',
                     useWebWorker: true,
                 };
                 originalImageData = await imageCompression(imageData2, options);
