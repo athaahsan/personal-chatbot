@@ -30,7 +30,8 @@ const UserInput = forwardRef(({
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [deleting, setDeleting] = useState(false);
-    const [error, setError] = useState("");
+    const [fileError, setFileError] = useState("");
+    const [nameError, setNameError] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
     const [imageData, setImageData] = useState(null);
     const [menu, setMenu] = useState("main");
@@ -279,6 +280,10 @@ const UserInput = forwardRef(({
         });
         //console.log("AI REASONING:", aiReasoning);
         userInfo(userName, originalUserMessage, finalResponse, imageLink);
+        if (!userName.trim()) {
+            setNameError("👈 Fill in your name");
+            setTimeout(() => setNameError(""), 3000);
+        }
     };
 
     return (
@@ -361,16 +366,46 @@ const UserInput = forwardRef(({
 
                     <div className="flex justify-between items-end w-full gap-2">
                         <div className="flex gap-2">
-                            <div ref={dropdownRef} className={`dropdown dropdown-top ${menuOpen ? "dropdown-open" : ""}`}>
-                                <div
-                                    role="button"
-                                    className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 "
-                                    onClick={() => {
-                                        setMenuOpen(!menuOpen);
-                                        setMenu("main");
+                            <div>
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    className="hidden"
+                                    accept="image/png, image/jpeg, image/webp"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            if (file.size > 10 * 1024 * 1024) {
+                                                setFileError("Maximum file size is 10MB");
+                                                e.target.value = "";
+                                                setTimeout(() => setFileError(""), 3000);
+                                                return;
+                                            }
+                                            //console.log("Selected file:", file);
+                                            setImagePreview(URL.createObjectURL(file));
+                                            e.target.value = "";
+                                            setImageData(file);
+                                        }
                                     }}
-                                >
-                                    <PiSlidersHorizontal size={16} />
+                                />
+                                <div className={`${!fileError ? "" : "tooltip tooltip-right tooltip-error tooltip-open"}`} data-tip={fileError}>
+                                    <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={false}>
+                                        <MdAttachFile size={16} />
+                                    </label>
+                                </div>
+                            </div>
+                            <div ref={dropdownRef} className={`dropdown dropdown-top ${menuOpen ? "dropdown-open" : ""}`}>
+                                <div className={`${!nameError ? "" : "tooltip tooltip-neutral tooltip-open tooltip-right"}`} data-tip={nameError}>
+                                    <div
+                                        role="button"
+                                        className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 "
+                                        onClick={() => {
+                                            setMenuOpen(!menuOpen);
+                                            setMenu("main");
+                                        }}
+                                    >
+                                        <PiSlidersHorizontal size={16} />
+                                    </div>
                                 </div>
                                 {menu === "main" && (
                                     <ul
@@ -480,34 +515,6 @@ const UserInput = forwardRef(({
                                         </li>
                                     </ul>
                                 )}
-                            </div>
-                            <div>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    className="hidden"
-                                    accept="image/png, image/jpeg, image/webp"
-                                    onChange={(e) => {
-                                        const file = e.target.files?.[0];
-                                        if (file) {
-                                            if (file.size > 10 * 1024 * 1024) {
-                                                setError("Maximum file size is 10MB");
-                                                e.target.value = "";
-                                                setTimeout(() => setError(""), 3000);
-                                                return;
-                                            }
-                                            //console.log("Selected file:", file);
-                                            setImagePreview(URL.createObjectURL(file));
-                                            e.target.value = "";
-                                            setImageData(file);
-                                        }
-                                    }}
-                                />
-                                <div className={`${!error ? "" : "tooltip tooltip-right tooltip-error tooltip-open"}`} data-tip={error}>
-                                    <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={false}>
-                                        <MdAttachFile size={16} />
-                                    </label>
-                                </div>
                             </div>
                         </div>
 
