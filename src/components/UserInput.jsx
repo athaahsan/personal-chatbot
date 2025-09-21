@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react"
 import imageCompression from "browser-image-compression";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
-import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft } from "react-icons/pi";
+import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft, PiMaskHappy } from "react-icons/pi";
 import { MdAttachFile, MdKeyboardArrowRight } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
 import userInfo from "../userInfo.js"
@@ -150,6 +150,11 @@ const UserInput = forwardRef(({
 
     const handleSend = async () => {
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
+        if (!userName.trim()) {
+            setNameError("👈 Fill in your name");
+            setTimeout(() => setNameError(""), 5000);
+        }
+
         setShowChat(true);
         setResponseDone(false)
         const originalUserMessage = userMessage;
@@ -280,10 +285,6 @@ const UserInput = forwardRef(({
         });
         //console.log("AI REASONING:", aiReasoning);
         userInfo(userName, originalUserMessage, finalResponse, imageLink);
-        if (!userName.trim()) {
-            setNameError("👈 Fill in your name");
-            setTimeout(() => setNameError(""), 3000);
-        }
     };
 
     return (
@@ -419,7 +420,7 @@ const UserInput = forwardRef(({
                                             }}>
                                             <div className="flex items-center justify-between w-full py-0 px-2 rounded-lg">
                                                 <div className="flex items-center gap-2 h-8">
-                                                    <PiSmiley size={20} />
+                                                    <PiMaskHappy size={20} />
                                                     <span className="px-0">Response style</span>
                                                 </div>
                                                 <MdKeyboardArrowRight size={20} />
