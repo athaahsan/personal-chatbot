@@ -83,8 +83,11 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Education: 
   * Telkom University, Bandung
     * Bachelor of Informatics
-    * GPA: 3.9/4.0 (Magna Cum Laude), Thesis in Machine Learning
-    * August 2021 - November 2025
+    * GPA: 3.9/4.0 (Magna Cum Laude)
+    * August 2021 - August 2025
+    * Thesis:
+      * Title: Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System
+      * Submitted to: The 9th International Conference on Software Engineering & Computer Systems (ICSECS) 2025
   * State Senior High School 9 Semarang (SMA Negeri 9 Semarang)
   * Hidayatullah Islamic Junior High School (SMP Islam Hidayatullah)
 * Work Experience:
