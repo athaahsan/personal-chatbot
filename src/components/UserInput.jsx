@@ -152,7 +152,7 @@ const UserInput = forwardRef(({
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
         if (!userName.trim()) {
             setNameError("👈 Fill in your name");
-            setTimeout(() => setNameError(""), 5000);
+            setTimeout(() => setNameError(""), 3000);
         }
 
         setShowChat(true);
