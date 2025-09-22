@@ -152,7 +152,6 @@ const UserInput = forwardRef(({
         if ((!userMessage.trim() && !imagePreview) || responseDone === false) return;
         if (!userName.trim()) {
             setNameError("👈 Fill in your name");
-            setTimeout(() => setNameError(""), 3000);
         }
 
         setShowChat(true);
@@ -403,6 +402,7 @@ const UserInput = forwardRef(({
                                         onClick={() => {
                                             setMenuOpen(!menuOpen);
                                             setMenu("main");
+                                            setNameError("");
                                         }}
                                     >
                                         <PiSlidersHorizontal size={16} />
