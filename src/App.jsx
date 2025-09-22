@@ -13,10 +13,6 @@ import { Routes, Route } from 'react-router-dom'
 
 
 function App() {
-  useEffect(() => {
-    console.log(`May God give me strength to let her go.`);
-  }, []);
-
   const [listMessage, setListMessage] = useState([]);
   const [listImagePreview, setListImagePreview] = useState([]);
   const [listImageData, setListImageData] = useState([]);

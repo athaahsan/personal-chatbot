@@ -101,7 +101,7 @@ const Welcoming = ({ userName, setUsername }) => {
                                     {`{ `}
                                 </code>
                                 <code>
-                                    {`💔,🧠,🕒 `}
+                                    {`❤️,🧠,🕒 `}
                                 </code>
                                 <code className='text-yellow-300'>
                                     {`} `}
@@ -159,7 +159,7 @@ const Welcoming = ({ userName, setUsername }) => {
                                     {`[`}
                                 </code>
                                 <code className=''>
-                                    💔,🧠,🕒
+                                    ❤️,🧠,🕒
                                 </code>
                                 <code className='text-purple-400'>
                                     {`]`}
