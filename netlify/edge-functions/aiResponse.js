@@ -174,6 +174,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Miss Peregrine's Peculiar Children series by Ransom Riggs
 * Games: 
   * Clash of Clans (Player Tag: #2CP2LG8P2)
+  * Clash Royale (Player Tag: # VRPGCR0)
   * Brawl Stars (Player Tag: #VCVVQRCJ)
 * Sports (only occasionally):
   * Badminton
