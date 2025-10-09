@@ -9,6 +9,8 @@ import UserChatSupabase from './components/UserChatSupabase';
 import { AnimatePresence, motion } from "framer-motion";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import { Routes, Route } from 'react-router-dom'
+import { IoArrowDownOutline } from "react-icons/io5";
+
 
 
 
@@ -122,7 +124,7 @@ function App() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  <MdOutlineArrowDownward size={22} />
+                  <IoArrowDownOutline size={22} />
                 </motion.button>
               )}
             </AnimatePresence>

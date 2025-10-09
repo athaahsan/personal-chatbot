@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
 import imageCompression from "browser-image-compression";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowUp } from "react-icons/fi";
-import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiSmiley, PiArrowLeft, PiMaskHappy } from "react-icons/pi";
-import { MdAttachFile, MdKeyboardArrowRight } from "react-icons/md";
+import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiPaperclip, PiArrowLeft, PiMaskHappy, PiArrowUp} from "react-icons/pi";
+
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
 import userInfo from "../userInfo.js"
 import imageToURL from "../imageToURL.js";
-
-
 
 
 const UserInput = forwardRef(({
@@ -390,7 +388,7 @@ const UserInput = forwardRef(({
                                 />
                                 <div className={`${!fileError ? "" : "tooltip tooltip-right tooltip-error tooltip-open"}`} data-tip={fileError}>
                                     <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={false}>
-                                        <MdAttachFile size={16} />
+                                        <PiPaperclip size={16} />
                                     </label>
                                 </div>
                             </div>
@@ -405,7 +403,7 @@ const UserInput = forwardRef(({
                                             setNameError("");
                                         }}
                                     >
-                                        <PiSlidersHorizontal size={16} />
+                                        <PiSlidersHorizontal  size={16} />
                                     </div>
                                 </div>
                                 {menu === "main" && (
@@ -520,7 +518,7 @@ const UserInput = forwardRef(({
                         </div>
 
                         <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone === false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
-                            {responseDone === true && <FiArrowUp size={16} />}
+                            {responseDone === true && <PiArrowUp  size={16} />}
                             {responseDone === false && <span className="loading loading-spinner loading-xs"></span>}
                         </button>
 
