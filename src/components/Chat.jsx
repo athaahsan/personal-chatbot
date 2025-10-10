@@ -99,7 +99,7 @@ const Chat = ({ listMessage, listImagePreview }) => {
                     {msg &&
                     <div className='wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] rounded-tr-none bg-base-content/10 rounded-2xl flex justify-end w-fit'>
                       <div className='whitespace-pre-wrap'>
-                        {msg}
+                        {msg.trim()}
                       </div>
                     </div>}
                   </div>}

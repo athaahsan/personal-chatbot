@@ -29,7 +29,7 @@ export default async (request, context) => {
     ? [
       {
         type: 'text',
-        text: '[IMAGE HISTORY]:',
+        text: '[PAST IMAGE(S) SENT HISTORY]:',
       },
       ...mappedListImageData,
     ]
