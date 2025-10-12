@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useLayoutEffect, forwardRef } from "react";
 import imageCompression from "browser-image-compression";
 import { motion, AnimatePresence } from "framer-motion";
-import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiPaperclip, PiArrowLeft, PiMaskHappy, PiArrowUp} from "react-icons/pi";
+import { PiSlidersHorizontal, PiNotePencil, PiGlobe, PiPaperclip, PiArrowLeft, PiMaskHappy, PiArrowUp } from "react-icons/pi";
 
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
@@ -197,6 +197,14 @@ const UserInput = forwardRef(({
         //console.log("Picture (Base64):", imageData);
         //console.log("List Image Preview:", listImagePreview);
         //console.log("List Image Data:", listImageData);
+        setConvHistory(prev => {
+            const newHistory = `${prev}
+USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
+
+`;
+            //console.log(`[CONVERSATION HISTORY (before) TO BE SENT TO THE MODEL]: ${newHistory}`);
+            return newHistory;
+        });
         const response = await fetch("/aiResponse", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -270,14 +278,11 @@ const UserInput = forwardRef(({
             });
         }
         setConvHistory(prev => {
-            const newHistory = `${prev}{
-    USER: "${userMessage}",
-    ASSISTANT: "${finalResponse}"
-},
-`;
+            const newHistory = `${prev}
+ASSISTANT: "${finalResponse}"
 
-            //console.log(`[CONVERSATION HISTORY (after)]:
-            //${newHistory}`);
+`;
+            //console.log(`[CONVERSATION HISTORY (after), APPENDED THE RESPONSE]: ${newHistory}`);
             return newHistory;
         });
         //console.log("AI REASONING:", aiReasoning);
@@ -403,7 +408,7 @@ const UserInput = forwardRef(({
                                             setNameError("");
                                         }}
                                     >
-                                        <PiSlidersHorizontal  size={16} />
+                                        <PiSlidersHorizontal size={16} />
                                     </div>
                                 </div>
                                 {menu === "main" && (
@@ -518,7 +523,7 @@ const UserInput = forwardRef(({
                         </div>
 
                         <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone === false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
-                            {responseDone === true && <PiArrowUp  size={16} />}
+                            {responseDone === true && <PiArrowUp size={16} />}
                             {responseDone === false && <span className="loading loading-spinner loading-xs"></span>}
                         </button>
 
