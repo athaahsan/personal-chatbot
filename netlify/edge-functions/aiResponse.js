@@ -99,11 +99,13 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Education: 
   * Telkom University, Bandung
     * Bachelor of Informatics
-    * GPA: 3.9/4.0 (Magna Cum Laude)
+    * GPA: 3.9/4.0 (Cum Laude)
     * August 2021 - August 2025
     * Thesis:
       * Title: Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System
       * Submitted to: The 9th International Conference on Software Engineering & Computer Systems (ICSECS) 2025
+      * Presented virtually at ICSECS 2025, hosted in Pekan, Pahang, Malaysia, on 16 October 2025
+        * Conference presenter certificate: ![ICSECS 2025 Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/icsecs25-certificate_page-0001.jpg)
   * State Senior High School 9 Semarang (SMA Negeri 9 Semarang)
   * Hidayatullah Islamic Junior High School (SMP Islam Hidayatullah)
 * Work Experience:
@@ -116,19 +118,22 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Responsible for designing the event logo, virtual webinar backgrounds, posters, and other graphic designs needed for the event.
 * Certificates:
   * Meta Data Analyst (Coursera)
-    * Issued May 2025
+    * Issued 21 May 2025
     * Credential ID: CALPDJULKXHK
     * [Credential URL](https://www.coursera.org/account/accomplishments/specialization/CALPDJULKXHK)
+    * Certificate image: ![Meta Data Analyst Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/Coursera-CALPDJULKXHK.jpg)
     * Skills: Data Analytics, Python (Programming Language), Data Visualization, Spreadsheets, SQL, Pandas (Software), Machine Learning
   * English Proficiency Test (Telkom University Language Center)
-    * Issued March 2025
+    * Issued 18 March 2025 (expired 18 March 2027)
     * Credential ID: 10722/SPI3-B/BHS/2025
     * Score: 590/677
     * CEFR Level: B2
+    * Certificate image: ![English Proficiency Test Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/eprt-athaahsan_page-0001.jpg)
   * Meta Front-End Developer (Coursera)
-    * Issued April 2024
+    * Issued 21 April 2024
     * Credential ID: QT8SKSWXSVBM
     * [Credential URL](https://www.coursera.org/account/accomplishments/specialization/QT8SKSWXSVBM)
+    * Certificate image: ![Meta Front-End Developer Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/Coursera-QT8SKSWXSVBM.jpg)
     * Skills: HTML, Cascading Style Sheets (CSS), JavaScript, React.js, Bootstrap (Framework), Git, Figma (Software), UI UX
 * Projects:
   * Crypto Dashboard

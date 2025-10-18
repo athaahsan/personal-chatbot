@@ -73,8 +73,9 @@ const Chat = ({ listMessage, listImagePreview }) => {
                           img: ({ node, ...props }) => (
                             <img
                               {...props}
-                              className="max-w-50 h-auto rounded-md"
+                              className="max-w-50 h-auto rounded-md cursor-pointer"
                               alt={props.alt}
+                              onClick={() => setSelectedImage(props.src)}
                             />
                           ),
                         }}
