@@ -154,8 +154,6 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
-* Romantic relationship: Currently single.
-* Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
 * Friends (he has many friends, some of them are):
   * Thirafi  
     * Son of Ma'rufin
@@ -197,6 +195,9 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Somebody to You by The Vamps
 * MBTI: INTP-T
 * Personality: Atha is usually on the quiet side, but he can match people's energy when the moment calls for it.
+* Fear the most: Losing the loved ones.
+* Romantic relationship: Currently single.
+* Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
 * Eyes: Just underwent ReLEx SMILE surgery, though might still occasionally use glasses for screen radiation protection.
   * Post-surgery photos (taken shortly after the ReLEx SMILE procedure):
     * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-1.jpeg)
