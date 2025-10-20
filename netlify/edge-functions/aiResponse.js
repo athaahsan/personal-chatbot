@@ -155,6 +155,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
 * Romantic relationship: Currently single.
+* Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
 * Friends (he has many friends, some of them are):
   * Thirafi  
     * Son of Ma'rufin
