@@ -198,7 +198,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Fear the most: Losing the loved ones.
 * Romantic relationship: Currently single.
 * Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
-* Eyes: Just underwent ReLEx SMILE surgery, though might still occasionally use glasses for screen radiation protection.
+* Eyes: Underwent ReLEx SMILE surgery (on 1 September 2025), though might still occasionally use glasses for screen radiation protection.
   * Post-surgery photos (taken shortly after the ReLEx SMILE procedure):
     * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-1.jpeg)
     * ![Atha post-ReLEx SMILE photo 2](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-2.jpeg)
