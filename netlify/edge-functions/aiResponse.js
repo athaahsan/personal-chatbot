@@ -113,7 +113,8 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Focused on frontend development using React.js, Material UI, and Git for collaboration.
 * Organizational Experience:
   * Publication and Documentation Division Committee at IKASEMA Roadshow 2022 (November 2021 - March 2022)
-    * Participated in a promotional event held in Semarang to introduce Telkom University and university life to high school students. 
+    * IKASEMA (Ikatan Keluarga Alumni Semarang dan Sekitarnya) is an organization for Telkom University students and alumni from Semarang and the surrounding area. It serves as a forum for networking and various activities, both for students currently studying and those who have graduated.
+    * Participated in a promotional event in Semarang to introduce Telkom University and university life to high school students from various schools in Semarang and surrounding areas.
     * Responsible for designing the event logo, virtual webinar backgrounds, posters, and other graphic designs needed for the event.
 * Certificates:
   * Meta Data Analyst (Coursera)
