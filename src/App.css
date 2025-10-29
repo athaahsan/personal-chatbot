@@ -37,3 +37,8 @@ body {
   --font-geist: "Geist", sans-serif;
   --font-mono: "Geist Mono", monospace;
 }
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:first-of-type::after {
+  content: none !important;
+}
