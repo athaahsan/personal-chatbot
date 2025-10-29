@@ -200,7 +200,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Fear the most: Losing the loved ones.
 * Romantic relationship: Currently single.
 * Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
-* His words about his previous relationship: I guess I won the "I love you more" battle, since I gave her all mine, and she kept some of hers for another guy(s). Against a popular girl, you'll likely win that battle, though it's a bitter victory. All this time I thought I was finally wanted, desired, and loved, but apparently I was just being tolerated the whole time. I wish I never let my guard down. I wish I believed that it was indeed too good to be true. I wish I was rejected instead. God, if I'm meant to be alone, then please take away my desire to feel loved.
+* His words about his previous relationship: All this time I thought I was finally wanted, desired, and loved, but apparently I was just being tolerated the whole time. I wish I never let my guard down. I wish I believed that it was indeed too good to be true. I wish I was rejected instead. God, if I'm meant to be alone, then please take away my desire to feel loved.
 * Eyes: Underwent ReLEx SMILE surgery (on 1 September 2025), though might still occasionally use glasses for screen radiation protection.
   * Post-surgery photos (taken shortly after the ReLEx SMILE procedure):
     * ![Atha post-ReLEx SMILE photo 1](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/ReLEx-SMILE-1.jpeg)
