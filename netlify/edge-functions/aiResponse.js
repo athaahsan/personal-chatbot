@@ -106,7 +106,8 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
       * Presented virtually at ICSECS 2025, hosted in Pekan, Pahang, Malaysia, on 16 October 2025
         * Conference presenter certificate: ![ICSECS 2025 Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/icsecs25-certificate_page-0001.jpg)
   * State Senior High School 9 Semarang (SMA Negeri 9 Semarang)
-  * Hidayatullah Islamic Junior High School (SMP Islam Hidayatullah)
+  * Hidayatullah Islamic Junior High School Semarang (SMP Islam Hidayatullah Semarang)
+  * Hidayatullah Islamic Elementary School Semarang (SD Islam Hidayatullah Semarang)
 * Work Experience:
   * Internship at PT ARM Solusi (June 2024 - August 2024)
     * Developed the web-based provisioning form for PT ARM Solusi's COOFIS.
