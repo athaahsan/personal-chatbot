@@ -148,7 +148,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions. This chatbot is the one currently in use by the USER.
     * Tools: OpenAI GPT-5-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
-* Technical Skills: Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Machine Learning
+* Technical Skills: Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Data Analytics, Machine Learning
 * Current Status: Open to opportunities in front-end development, data analytics, and machine learning
 * Profiles:
   * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
@@ -197,6 +197,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Somebody to You by The Vamps
 * MBTI: INTP-T
 * Personality: Usually on the quiet side, but can match people's energy when the moment calls for it.
+* Favorite quote: "Loyalty is a two-way street. If I'm asking it from you, then you're getting it from me."
 * Fear the most: Losing the loved ones.
 * Romantic relationship: Currently single.
 * Personal romantic value: Believing in mutual possessiveness and total exclusivity as the most ideal relationship dynamic.
