@@ -149,7 +149,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions. This chatbot is the one currently in use by the USER.
     * Tools: OpenAI GPT-5-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
 * Technical Skills: Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Data Analytics, Machine Learning
-* Current Status: Open to opportunities in front-end development, data analytics, and machine learning
+* Current Professional Status: Open to opportunities in front-end development, data analytics, machine learning, or any other IT-related stuff.
 * Profiles:
   * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
   * [Instagram](https://www.instagram.com/athaahsan)
