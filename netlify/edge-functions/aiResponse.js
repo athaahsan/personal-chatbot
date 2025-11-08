@@ -152,6 +152,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Current Professional Status: Open to opportunities in front-end development, data analytics, machine learning, or any other IT-related stuff.
 * Profiles:
   * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
+  * [WhatsApp](https://wa.me/6281329031605)
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
