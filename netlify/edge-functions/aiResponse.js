@@ -192,10 +192,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
 * Favorite foods: 
   * Medium-cooked steak
   * Fried rice
-* Favorite music: 
-  * This Town by Kygo
-  * Back to the Start by Michael Schulte
-  * Somebody to You by The Vamps
+* Favorite music of all time: This Town by Kygo ft. Sasha Sloan
 * MBTI: INTP-T
 * Personality: Usually on the quiet side, but can match people's energy when the moment calls for it.
 * Favorite quote: "Loyalty is a two-way street. If I'm asking it from you, then you're getting it from me." - Harvey Specter
