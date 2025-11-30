@@ -99,12 +99,15 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Telkom University, Bandung
     * Bachelor of Informatics
     * GPA: 3.9/4.0 (Cum Laude)
-    * August 2021 - August 2025
+    * Start date: 1 August 2021
+    * Completion date: 26 August 2025
+    * Graduation date: 28 November 2025
     * Thesis:
       * Title: Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System
       * Submitted to: The 9th International Conference on Software Engineering & Computer Systems (ICSECS) 2025
       * Presented virtually at ICSECS 2025, hosted in Pekan, Pahang, Malaysia, on 16 October 2025
         * Conference presenter certificate: ![ICSECS 2025 Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/icsecs25-certificate_page-0001.jpg)
+    * Graduation photo: ![Atha Graduation Photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/atha-graduation-photo.jpg) 
   * State Senior High School 9 Semarang (SMA Negeri 9 Semarang)
   * Hidayatullah Islamic Junior High School Semarang (SMP Islam Hidayatullah Semarang)
   * Hidayatullah Islamic Elementary School Semarang (SD Islam Hidayatullah Semarang)
