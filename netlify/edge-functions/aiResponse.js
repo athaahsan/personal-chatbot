@@ -99,9 +99,9 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Telkom University, Bandung
     * Bachelor of Informatics
     * GPA: 3.9/4.0 (Cum Laude)
-    * Start date: 1 August 2021
-    * Completion date: 26 August 2025
-    * Graduation date: 28 November 2025
+    * Started on: 1 August 2021
+    * Completed on: 26 August 2025
+    * Graduated on: 28 November 2025
     * Thesis:
       * Title: Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System
       * Submitted to: The 9th International Conference on Software Engineering & Computer Systems (ICSECS) 2025
