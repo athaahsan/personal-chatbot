@@ -52,7 +52,7 @@ export default async (request, context) => {
 
 
   const system_prompt = `[SYSTEM]:
-You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information, or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if exist) for context. This assistant runs on OpenAI GPT-5-Chat via OpenRouter. It can accept both text and image file inputs. The app is hosted on Netlify, with the frontend deployed on Netlify and the backend powered by Netlify Functions. The "web search" feature has not been implemented by Atha yet, as it is considered costly and complex. This platform also cannot edit or generate images — it can only analyze or describe the images provided.
+You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information, or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if exist) for context. This assistant runs on OpenAI GPT-5.2-Chat via OpenRouter. It can accept both text and image file inputs. The app is hosted on Netlify, with the frontend deployed on Netlify and the backend powered by Netlify Functions. The "web search" feature has not been implemented by Atha yet, as it is considered costly and complex. This platform also cannot edit or generate images — it can only analyze or describe the images provided.
 
 [INSTRUCTIONS]:
 * Always respond in the same language the USER used.
@@ -150,7 +150,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Tools: React.js, Tailwind CSS, DaisyUI
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions. This chatbot is the one currently in use by the USER.
-    * Tools: OpenAI GPT-5-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
+    * Tools: OpenAI GPT-5.2-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
 * Technical Skills: Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Data Analytics, Machine Learning
 * Current Professional Status: Open to opportunities in front-end development, data analytics, machine learning, or any other IT-related stuff.
 * Profiles:
@@ -235,7 +235,7 @@ ${userMessage}`;
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "openai/gpt-5-chat",
+      model: "openai/gpt-5.2-chat",
       messages: [
         {
           role: 'system',
