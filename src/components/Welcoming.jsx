@@ -1,5 +1,5 @@
 import React from 'react'
-import profilePic from '../assets/athaPic4.jpeg'
+import profilePic from '../assets/athaPic5.jpeg'
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 
@@ -84,7 +84,7 @@ const Welcoming = ({ userName, setUsername }) => {
                         <div className='flex flex-row justify-center items-center'>
                             <div className=''>
                                 <img
-                                    className="mask mask-circle h-16 w-16 sm:h-20 sm:w-20 my-2"
+                                    className="mask mask-circle h-20 w-20 sm:h-24 sm:w-24 my-2"
                                     src={profilePic}
                                 />
                             </div>
