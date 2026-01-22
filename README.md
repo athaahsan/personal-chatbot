@@ -12,7 +12,7 @@ A personal assistant chatbot that can answer questions about Atha Ahsan Xavier H
 
 - **Frontend**: React.js, Vite
 - **Styling**: Tailwind CSS, DaisyUI
-- **Chat Model**: OpenAI GPT-5-Chat via OpenRouter
+- **Chat Model**: OpenAI GPT-5.2-Chat via OpenRouter
 - **Hosting & Backend**: Netlify (Functions + Edge Functions)
 
 ## Live Demo
