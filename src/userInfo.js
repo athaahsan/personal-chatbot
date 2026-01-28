@@ -61,12 +61,14 @@ const userInfo = async (userName,userMessage,aiResponse,imageLink) => {
       body: JSON.stringify(message),
     });
 
+    /*
     // 8. Kirim ke Google Sheets via Netlify Function
     await fetch("/.netlify/functions/sendSheets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
     });
+    */
 
 
   } catch (err) {

@@ -141,6 +141,31 @@ const UserInput = forwardRef(({
         }
     };
 
+    const handlePaste = (e) => {
+        const items = e.clipboardData?.items;
+        if (!items) return;
+
+        for (const item of items) {
+            if (item.type.startsWith("image/")) {
+                e.preventDefault(); // stop image being pasted as text
+
+                const file = item.getAsFile();
+                if (!file) return;
+
+                if (file.size > 10 * 1024 * 1024) {
+                    setFileError("Maximum file size is 10MB");
+                    setTimeout(() => setFileError(""), 3000);
+                    return;
+                }
+
+                setImagePreview(URL.createObjectURL(file));
+                setImageData(file);
+                return;
+            }
+        }
+    };
+
+
     const [responseDone, setResponseDone] = useState(true);
     const [responseThinking, setResponseThinking] = useState(false)
     const [selectedImage, setSelectedImage] = useState(null);
@@ -361,6 +386,7 @@ ASSISTANT: "${finalResponse}"
                         value={userMessage}
                         onChange={(e) => setUserMessage(e.target.value)}
                         onKeyDown={handleKeyDown}
+                        onPaste={handlePaste}
                         placeholder={placeholder}
                         className="text-base textarea textarea-bordered w-full resize-none min-h-0 textarea-ghost focus:outline-none focus:ring-0 focus:border-transparent focus:bg-transparent custom-scrollbar rounded-none px-0 py-0 mb-[5px]"
                         rows={1}
