@@ -142,27 +142,29 @@ const UserInput = forwardRef(({
     };
 
     const handlePaste = (e) => {
-        const items = e.clipboardData?.items;
-        if (!items) return;
+        const items = Array.from(e.clipboardData?.items || []);
+        if (!items.length) return;
 
-        for (const item of items) {
-            if (item.type.startsWith("image/")) {
-                e.preventDefault(); // stop image being pasted as text
+        const imageItem = items.find(item =>
+            item.kind === "file" &&
+            ["image/png", "image/jpeg", "image/webp"].includes(item.type)
+        );
 
-                const file = item.getAsFile();
-                if (!file) return;
+        if (!imageItem) return;
 
-                if (file.size > 10 * 1024 * 1024) {
-                    setFileError("Maximum file size is 10MB");
-                    setTimeout(() => setFileError(""), 3000);
-                    return;
-                }
+        e.preventDefault();
 
-                setImagePreview(URL.createObjectURL(file));
-                setImageData(file);
-                return;
-            }
+        const file = imageItem.getAsFile();
+        if (!file) return;
+
+        if (file.size > 10 * 1024 * 1024) {
+            setFileError("Maximum file size is 10MB");
+            setTimeout(() => setFileError(""), 3000);
+            return;
         }
+
+        setImagePreview(URL.createObjectURL(file));
+        setImageData(file);
     };
 
 
