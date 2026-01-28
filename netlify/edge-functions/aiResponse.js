@@ -115,7 +115,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Hidayatullah Islamic Elementary School Semarang (SD Islam Hidayatullah Semarang)
 * Work Experience:
   * Contract at PT Beon Intermedia as Business Development Officer - Data Scientist Function (January 2026 - Present)
-    * Designed and maintained n8n-based automation workflows for data collection, enrichment, and reporting.
+    * Designed and maintained n8n-based automation workflows for data collection, enrichment, and reporting, integrating with Google Apps Script (GAS) web apps.
     * Performed data cleaning, EDA, and visualization for SaaS product research.
     * Supported AI & data-driven PoC and experimentation.
     * Implemented basic statistical / ML approaches under supervision.
@@ -154,7 +154,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions. This chatbot is the one currently in use by the USER.
     * Tools: OpenAI GPT-5.2-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
-* Technical Skills: n8n, Python, JavaScript, React.js, HTML, CSS, SQL, Git, Pandas, Streamlit, Tailwind CSS, Figma, Data Visualization, Data Analytics, Machine Learning
+* Technical Skills: n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
 * Current Professional Status: Employed as a Data Scientist at PT Beon Intermedia (since January 2026)
 * Profiles:
   * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
@@ -162,7 +162,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
-* CV: [CV PDF (direct download link)](https://drive.google.com/uc?export=download&id=1al07qTOXQlxogWXGj7xtXg1A8xt_-l-W)
+* CV: [CV PDF (direct download link)](https://drive.google.com/uc?export=download&id=1yFHDDmVx8auwiTs3Hshw3_XQe47Ugi7G)
 * Friends (he has many friends, some of them are):
   * Thirafi  
     * Son of Ma'rufin
