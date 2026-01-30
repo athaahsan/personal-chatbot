@@ -9,7 +9,7 @@ import UserChatSupabase from './components/UserChatSupabase';
 import { AnimatePresence, motion } from "framer-motion";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import { Routes, Route } from 'react-router-dom'
-import { IoArrowDownOutline } from "react-icons/io5";
+import { IoArrowDownOutline, IoImageOutline } from "react-icons/io5";
 
 
 
@@ -20,6 +20,14 @@ function App() {
   const [listImageData, setListImageData] = useState([]);
   const [convHistory, setConvHistory] = useState(``)
   const [showChat, setShowChat] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageData, setImageData] = useState(null);
+  const [fileError, setFileError] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
+
+  const dragCounter = useRef(0);
+
+
 
   const [userName, setUserName] = useState(() => {
     return localStorage.getItem("userName") || "";
@@ -76,6 +84,62 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  const acceptImageFile = (file) => {
+    if (!file) return;
+    if (!["image/png", "image/jpeg", "image/webp"].includes(file.type)) {
+      setFileError("Only PNG, JPG, or WebP images are supported");
+      setTimeout(() => setFileError(""), 3000);
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError("Maximum file size is 10MB");
+      setTimeout(() => setFileError(""), 3000);
+      return;
+    }
+    setImagePreview(URL.createObjectURL(file));
+    setImageData(file);
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    dragCounter.current += 1;
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    dragCounter.current -= 1;
+
+    if (dragCounter.current <= 0) {
+      setIsDragging(false);
+      dragCounter.current = 0;
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    dragCounter.current = 0;
+    setIsDragging(false);
+
+    const files = Array.from(e.dataTransfer.files || []);
+    if (!files.length) return;
+
+    const imageFile = files.find(file =>
+      ["image/png", "image/jpeg", "image/webp"].includes(file.type)
+    );
+
+    if (imageFile) {
+      acceptImageFile(imageFile);
+    } else {
+      setFileError("File extension not supported.");
+      setTimeout(() => setFileError(""), 3000);
+    }
+  };
+
 
 
   return (
@@ -86,9 +150,26 @@ function App() {
           animate={{ filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
+          {isDragging && (
+            <motion.div
+              className="fixed inset-0 bg-primary/10 backdrop-blur-lg z-200 flex items-center justify-center pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="flex flex-col items-center text-lg font-medium text-base-content gap-2">
+                <IoImageOutline size={64} />
+                Drop image to attach
+              </div>
+            </motion.div>
+          )}
           <div
             ref={containerRef}
             data-theme={theme}
+            onDragEnter={handleDragEnter}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
             className="bg-base-200 font-geist flex flex-col h-[100dvh] overflow-y-auto custom-scrollbar snap-y snap-mandatory"
           >
             <Navbar theme={theme} setTheme={setTheme} />
@@ -106,11 +187,18 @@ function App() {
               setListImagePreview={setListImagePreview}
               listImageData={listImageData}
               setListImageData={setListImageData}
+              imagePreview={imagePreview}
+              setImagePreview={setImagePreview}
+              imageData={imageData}
+              setImageData={setImageData}
+              fileError={fileError}
+              setFileError={setFileError}
               userName={userName}
               setUserName={setUserName}
               convHistory={convHistory}
               setConvHistory={setConvHistory}
               setShowChat={setShowChat}
+              acceptImageFile={acceptImageFile}
             />
 
             <AnimatePresence>

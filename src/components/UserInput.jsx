@@ -21,6 +21,13 @@ const UserInput = forwardRef(({
     listImageData,
     setListImageData,
     setShowChat,
+    imagePreview,
+    setImagePreview,
+    imageData,
+    setImageData,
+    fileError,
+    setFileError,
+    acceptImageFile,
 }, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
@@ -28,10 +35,7 @@ const UserInput = forwardRef(({
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [deleting, setDeleting] = useState(false);
-    const [fileError, setFileError] = useState("");
     const [nameError, setNameError] = useState("");
-    const [imagePreview, setImagePreview] = useState(null);
-    const [imageData, setImageData] = useState(null);
     const [menu, setMenu] = useState("main");
     const [menuOpen, setMenuOpen] = useState(false);
     const [timeNow, setTimeNow] = useState('');
@@ -143,29 +147,15 @@ const UserInput = forwardRef(({
 
     const handlePaste = (e) => {
         const items = Array.from(e.clipboardData?.items || []);
-        if (!items.length) return;
-
-        const imageItem = items.find(item =>
-            item.kind === "file" &&
-            ["image/png", "image/jpeg", "image/webp"].includes(item.type)
+        const imageItem = items.find(
+            item => item.kind === "file" &&
+                ["image/png", "image/jpeg", "image/webp"].includes(item.type)
         );
-
         if (!imageItem) return;
-
         e.preventDefault();
-
-        const file = imageItem.getAsFile();
-        if (!file) return;
-
-        if (file.size > 10 * 1024 * 1024) {
-            setFileError("Maximum file size is 10MB");
-            setTimeout(() => setFileError(""), 3000);
-            return;
-        }
-
-        setImagePreview(URL.createObjectURL(file));
-        setImageData(file);
+        acceptImageFile(imageItem.getAsFile());
     };
+
 
 
     const [responseDone, setResponseDone] = useState(true);
@@ -419,7 +409,7 @@ ASSISTANT: "${finalResponse}"
                                         }
                                     }}
                                 />
-                                <div className={`${!fileError ? "" : "tooltip tooltip-right tooltip-error tooltip-open"}`} data-tip={fileError}>
+                                <div className={`${!fileError ? "" : "tooltip tooltip-right tooltip-error tooltip-open z-50"}`} data-tip={fileError}>
                                     <label htmlFor="fileInput" className="btn btn-sm p-2 rounded-lg btn-ghost border border-base-content/10 cursor-pointer" disabled={false}>
                                         <PiPaperclip size={16} />
                                     </label>
