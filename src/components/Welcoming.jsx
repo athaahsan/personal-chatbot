@@ -21,7 +21,7 @@ const Welcoming = ({ userName, setUsername }) => {
     const placeholder = ` ... `;
     useEffect(() => {
         if (spanRef.current) {
-            setInputWidth(spanRef.current.offsetWidth + 1);
+            setInputWidth(spanRef.current.offsetWidth + 2);
         }
     }, [userName, placeholder]);
 
@@ -33,14 +33,14 @@ const Welcoming = ({ userName, setUsername }) => {
 
                     <div className='flex flex-col my-[50dvh] gap-2 flex items-center justify-center snap-center snap-always'>
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='opacity-50'>
+                            <div className='shimmer-text'>
                                 Hi,&nbsp;
                             </div>
                             <div className={`flex items-center relative inline-flex ${!userName ? 'tooltip tooltip-open' : ""}`} data-tip="Type your name">
                                 {/* hidden span to measure text */}
                                 <span
                                     ref={spanRef}
-                                    className="absolute invisible whitespace-pre text-2xl sm:text-3xl font-normal"
+                                    className="absolute invisible whitespace-pre text-2xl sm:text-3xl font-semibold"
                                 >
                                     {userName || placeholder}
                                 </span>
@@ -55,7 +55,7 @@ const Welcoming = ({ userName, setUsername }) => {
                                         width: inputWidth,
                                         //transition: "width 0.15s ease-out",
                                     }}
-                                    className="h-[31px] sm:h-[36px] input input-ghost input-md rounded-none border-transparent focus:outline-none focus:ring-0 focus:border-transparent focus:bg-transparent focus:text-base-content hover:bg-transparent p-0 my-0 text-2xl sm:text-3xl "
+                                    className="h-[31px] sm:h-[36px] input input-ghost input-md rounded-none border-transparent focus:outline-none focus:ring-0 focus:border-transparent focus:bg-transparent focus:text-base-content hover:bg-transparent p-0 my-0 text-2xl sm:text-3xl font-semibold"
                                 />
                             </div>
                             &nbsp;
@@ -65,20 +65,18 @@ const Welcoming = ({ userName, setUsername }) => {
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='opacity-50'>Ask me&nbsp;</div>
-                            <p className="">anything</p>
+                            <div className='shimmer-text'>Ask me anything</div>
                             <div className=''>&nbsp;✨</div>
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='opacity-50'>Or, if you're&nbsp;</div>
-                            <p className="">curious</p>
+                            <div className='shimmer-text'>Or, if you're curious</div>
                             <div className=''>&nbsp;🤔</div>
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='opacity-50'>Ask me about&nbsp;</div>
-                            <p className="">him 👇</p>
+                            <div className='shimmer-text'>Ask me about him</div>
+                            <p className="">&nbsp;👇</p>
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>

@@ -42,3 +42,23 @@ body {
 .prose blockquote p:first-of-type::after {
   content: none !important;
 }
+
+.shimmer-text {
+  color: transparent;
+  background: linear-gradient(
+    110deg,
+    oklch(from var(--color-base-content) l c h / 0.55) 25%,
+    oklch(from var(--color-base-content) l c h / 1) 37%,
+    oklch(from var(--color-base-content) l c h / 0.55) 63%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
