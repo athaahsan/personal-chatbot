@@ -21,7 +21,7 @@ const Welcoming = ({ userName, setUsername }) => {
     const placeholder = ` ... `;
     useEffect(() => {
         if (spanRef.current) {
-            setInputWidth(spanRef.current.offsetWidth + 0);
+            setInputWidth(spanRef.current.offsetWidth + 1);
         }
     }, [userName, placeholder]);
 
