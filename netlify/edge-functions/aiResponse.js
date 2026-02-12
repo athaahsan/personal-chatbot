@@ -148,12 +148,12 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Skills: HTML, Cascading Style Sheets (CSS), JavaScript, React.js, Bootstrap (Framework), Git, Figma (Software), UI UX
 * Projects:
   * Crypto Dashboard
-    * Developed a real-time cryptocurrency dashboard that visualizes live pricing trends and market sentiment by integrating CoinDesk Index API and Fear & Greed Index API.
+    * Developed a real-time cryptocurrency dashboard with an AI Insight module that analyzes engineered technical indicators and market sentiment to generate structured trading bias on the daily timeframe using CoinDesk Index API and Fear & Greed Index API.
     * [Demo](https://atha-crypto-dashboard.streamlit.app/)
-    * Tools: Streamlit, Python, Pandas
+    * Tech Stack: Streamlit, Python, Pandas, Plotly, OpenRouter (LLM Integration)
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions. This chatbot is the one currently in use by the USER.
-    * Tools: OpenAI GPT-5.2-Chat (OpenRouter), React.js, Tailwind CSS, DaisyUI
+    * Tech Stack: OpenRouter (LLM Integration), React.js, Tailwind CSS, DaisyUI
 * Technical Skills: n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
 * Current Professional Status: Employed as a Data Scientist at PT Beon Intermedia (since January 2026)
 * Profiles:
