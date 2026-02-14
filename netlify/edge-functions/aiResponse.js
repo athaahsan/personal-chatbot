@@ -236,6 +236,7 @@ ${userMessage}`;
       'HTTP-Referer': 'https://atha-personal-chatbot.netlify.app/',
       'X-Title': `Atha's Personal Chatbot`,
       "Content-Type": "application/json",
+      "Accept": "text/event-stream",
     },
     body: JSON.stringify({
       model: "openai/gpt-5.2-chat",
@@ -276,24 +277,13 @@ ${userMessage}`;
     }),
   });
 
-  return new Response(
-    new ReadableStream({
-      async start(controller) {
-        const reader = response.body.getReader();
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          controller.enqueue(value);
-        }
-        controller.close();
-      },
-    }),
-    {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-      },
-    }
-  );
+  return new Response(response.body, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      "Connection": "keep-alive",
+      "Content-Encoding": "identity",
+    },
+  });
+
 };

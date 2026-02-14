@@ -41,6 +41,10 @@ const UserInput = forwardRef(({
     const [timeNow, setTimeNow] = useState('');
     const textareaRef = useRef(null);
 
+    const MAX_LENGTH = 5000;
+    const isTooLong = userMessage.length > MAX_LENGTH;
+
+
     useEffect(() => {
         const updateTime = () => {
             const now = new Date();
@@ -380,6 +384,7 @@ ASSISTANT: "${finalResponse}"
                         onKeyDown={handleKeyDown}
                         onPaste={handlePaste}
                         placeholder={placeholder}
+                        //maxLength={MAX_LENGTH}
                         className="text-base textarea textarea-bordered w-full resize-none min-h-0 textarea-ghost focus:outline-none focus:ring-0 focus:border-transparent focus:bg-transparent custom-scrollbar rounded-none px-0 py-0 mb-[5px]"
                         rows={1}
                         style={{ maxHeight: "200px" }}
@@ -540,10 +545,23 @@ ASSISTANT: "${finalResponse}"
                             </div>
                         </div>
 
-                        <button onClick={handleSend} disabled={(!userMessage.trim() && !imagePreview) || responseDone === false} className="btn btn-sm p-2 rounded-lg btn-primary self-end">
-                            {responseDone === true && <PiArrowUp size={16} />}
-                            {responseDone === false && <span className="loading loading-spinner loading-xs"></span>}
-                        </button>
+                        <div
+                            className={`${isTooLong ? "tooltip tooltip-left tooltip-error tooltip-open" : ""
+                                }`}
+                            data-tip="Message is too long"
+                        >
+                            <button
+                                onClick={handleSend}
+                                disabled={
+                                    (!userMessage.trim() && !imagePreview) ||
+                                    responseDone === false ||
+                                    isTooLong
+                                } className="btn btn-sm p-2 rounded-lg btn-primary self-end"
+                            >
+                                {responseDone === true && <PiArrowUp size={16} />}
+                                {responseDone === false && <span className="loading loading-spinner loading-xs"></span>}
+                            </button>
+                        </div>
 
                     </div>
 
