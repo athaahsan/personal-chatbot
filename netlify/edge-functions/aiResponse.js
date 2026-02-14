@@ -1,3 +1,9 @@
+export const config = {
+  path: "/aiResponse",
+  streaming: true, // ⭐ THIS IS THE KEY
+};
+
+
 export default async (request, context) => {
   const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink } = await request.json();
   const now = new Date(timeNow);
@@ -279,10 +285,12 @@ ${userMessage}`;
 
   return new Response(response.body, {
     headers: {
-      "Content-Type": "text/event-stream",
+      "Content-Type": "text/event-stream; charset=utf-8",
       "Cache-Control": "no-cache, no-transform",
       "Connection": "keep-alive",
       "Content-Encoding": "identity",
+      "Transfer-Encoding": "chunked",
+      "X-Accel-Buffering": "no",
     },
   });
 
