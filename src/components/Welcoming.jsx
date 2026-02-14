@@ -1,6 +1,6 @@
 import React from 'react'
 import profilePic from '../assets/athaPic5.jpeg'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion } from "framer-motion";
 
 
@@ -19,11 +19,18 @@ const Welcoming = ({ userName, setUsername }) => {
     const spanRef = useRef(null);
     const [inputWidth, setInputWidth] = useState(32);
     const placeholder = ` ... `;
-    useEffect(() => {
-        if (spanRef.current) {
+    useLayoutEffect(() => {
+        if (!spanRef.current) return;
+        const updateWidth = () => {
             setInputWidth(spanRef.current.offsetWidth + 2);
+        };
+        updateWidth();
+        if (document.fonts) {
+            document.fonts.ready.then(updateWidth);
         }
-    }, [userName, placeholder]);
+
+    }, [userName]);
+
 
     return (
         <div className='px-5.5 flex-1 flex justify-center text-2xl sm:text-3xl'>
@@ -60,7 +67,7 @@ const Welcoming = ({ userName, setUsername }) => {
                             </div>
                             &nbsp;
                             <div className=''>
-                                    👋
+                                👋
                             </div>
                         </div>
 
