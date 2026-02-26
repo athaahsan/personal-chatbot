@@ -243,7 +243,7 @@ ${userMessage}`;
       "Accept": "text/event-stream",
     },
     body: JSON.stringify({
-      model: "openai/gpt-5.2-chat",
+      model: "google/gemini-3-flash-preview",
       messages: [
         {
           role: 'system',
