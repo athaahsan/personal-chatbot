@@ -112,9 +112,11 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
       * Title: Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System
       * Thesis advisor: Dr. Z.K. Abdurahman Baizal, S.Si, M.Kom.
       * Submitted to: The 9th International Conference on Software Engineering & Computer Systems (ICSECS) 2025
-      * Paper URL: [Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System](https://ieeexplore.ieee.org/document/11279051)
       * Presented virtually at ICSECS 2025, hosted in Pekan, Pahang, Malaysia, on 16 October 2025
         * Conference presenter certificate: ![ICSECS 2025 Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/icsecs25-certificate_page-0001.jpg)
+      * Date Added to IEEE Xplore: 12 January 2026
+      * Official Publication (IEEE Xplore): [Pipeline Hybridization of Autoencoder and Singular Value Decomposition for Multi-Criteria Recommender System](https://ieeexplore.ieee.org/document/11279051)
+      * Author Copy (PDF): [Download PDF](https://drive.google.com/uc?export=download&id=1jEMCLVErBwjGSABQy81fUKKOPlHNzLni)
     * Graduation photo: ![Atha Graduation Photo](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/atha-graduation-photo.jpg) 
   * State Senior High School 9 Semarang (SMA Negeri 9 Semarang)
   * Hidayatullah Islamic Junior High School Semarang (SMP Islam Hidayatullah Semarang)
