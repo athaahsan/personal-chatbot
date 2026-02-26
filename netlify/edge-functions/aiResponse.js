@@ -121,10 +121,9 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Hidayatullah Islamic Elementary School Semarang (SD Islam Hidayatullah Semarang)
 * Work Experience:
   * Contract at PT Beon Intermedia as Business Development Officer - Data Scientist Function (January 2026 - Present)
-    * Designed and maintained n8n-based automation workflows for data collection, enrichment, and reporting, integrating with Google Apps Script (GAS) web apps.
-    * Performed data cleaning, EDA, and visualization for SaaS product research.
-    * Supported AI & data-driven PoC and experimentation.
-    * Implemented basic statistical / ML approaches under supervision.
+    * Designed and maintained n8n-based automation workflows for SaaS products and internal operations.
+    * Integrated LLM capabilities into automation workflows, performing prompt engineering and AI-driven logic.
+    * Occasionally combined n8n with Google Apps Script (GAS) to enable dynamic, user-specific credentials in SaaS systems.
   * Internship at PT ARM Solusi as Frontend Web Developer (June 2024 - August 2024)
     * Developed the web-based provisioning form for PT ARM Solusi's COOFIS.
     * Focused on frontend development using React.js, Material UI, and Git for collaboration.
@@ -168,7 +167,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
-* CV: [CV PDF (direct download link)](https://drive.google.com/uc?export=download&id=1VpxqrZijEPPaMHKQSHMm78MGSf9DWevY)
+* CV: [CV PDF (direct download link)](https://drive.google.com/uc?export=download&id=17Itu26lXJC6CCb-lG9yIA6uSl0yLZOzF)
 * Friends (he has many friends, some of them are):
   * Thirafi  
     * Son of Ma'rufin
