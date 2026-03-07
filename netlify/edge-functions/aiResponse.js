@@ -142,6 +142,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Certificate image: ![Meta Data Analyst Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/Coursera-CALPDJULKXHK.jpg)
     * Skills: Data Analytics, Python (Programming Language), Data Visualization, Spreadsheets, SQL, Pandas (Software), Machine Learning
   * English Proficiency Test (Telkom University Language Center)
+    * TOEFL ITP-style proficiency test.
     * Issued 18 March 2025 (expired 18 March 2027)
     * Credential ID: 10722/SPI3-B/BHS/2025
     * Score: 590/677
