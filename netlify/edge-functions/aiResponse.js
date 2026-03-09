@@ -171,7 +171,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * [Instagram](https://www.instagram.com/athaahsan)
   * [GitHub](https://github.com/athaahsan)
   * [LinkedIn](https://www.linkedin.com/in/athaahsan/)
-* CV: [CV PDF (direct download link)](https://drive.google.com/uc?export=download&id=1VJhL5kHJY8bVxoUfMLlK6E-aJ1vW0-hR)
+* CV: [CV PDF](https://drive.google.com/file/d/1VJhL5kHJY8bVxoUfMLlK6E-aJ1vW0-hR/view?usp=sharing)
 * Friends (he has many friends, some of them are):
   * Thirafi  
     * Son of Ma'rufin
