@@ -245,13 +245,14 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                     }),
                 });
                 if (searchResponse.ok) {
-                    webSearchResult = await searchResponse.text() || null;
-                }
+                    const searchData = await searchResponse.json();
+                    webSearchResult = searchData?.results?.length ? JSON.stringify(searchData.results) : null;
+                }git
             } catch (err) {
                 console.error("Web search failed:", err);
             }
         }
-
+        console.log("Web Search Result:", webSearchResult);
         setLoadingPhase("thinking");
 
         const response = await fetch("/aiResponse", {
@@ -422,7 +423,7 @@ ASSISTANT: "${finalResponse}"
 
                                     <button
                                         onClick={() => setWebSearchEnabled(false)}
-                                        className="px-1.5 flex items-center hover:bg-error/25 bg-error/5 transition"
+                                        className="px-1.5 flex items-center hover:bg-error/25 bg-error/10 transition"
                                     >
                                         <LiaTimesSolid size={12} />
                                     </button>

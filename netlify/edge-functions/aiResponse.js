@@ -24,8 +24,7 @@ export default async (request, context) => {
   const webSearchSection = (webSearchResult && webSearchResult !== "NO_SEARCH_NEEDED")
     ? `[WEB SEARCH RESULTS]:
 ${webSearchResult}
---- --- ---
-Use the above results to inform your response. Include the sources from the SOURCES section in your response.`
+Use the above results to inform your response. Each result contains a url, title, and content. Include relevant sources as markdown links in your response.`
     : "";
 
   const mappedListImageData = (imageLink !== null
