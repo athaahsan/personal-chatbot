@@ -422,7 +422,7 @@ ASSISTANT: "${finalResponse}"
 
                                     <button
                                         onClick={() => setWebSearchEnabled(false)}
-                                        className="px-1.5 flex items-center hover:bg-error/25 bg-error/10 transition"
+                                        className="px-1.5 flex items-center hover:bg-error/25 bg-error/5 transition"
                                     >
                                         <LiaTimesSolid size={12} />
                                     </button>
