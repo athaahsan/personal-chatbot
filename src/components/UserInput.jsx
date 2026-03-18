@@ -385,13 +385,13 @@ ASSISTANT: "${finalResponse}"
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.25, ease: "easeInOut" }}
                             >
-                                <div className="badge badge-soft badge-primary p-0 overflow-hidden flex items-stretch gap-0">
+                                <div className="badge badge-soft badge-primary border border-primary/20 rounded-lg p-0 overflow-hidden flex items-stretch gap-0">
                                     <div className="flex items-center gap-1 px-2">
                                         <PiGlobe size={16} />
                                         Web search
                                     </div>
 
-                                    <div className="w-[1px] shrink-0 bg-info/5 self-stretch"></div>
+                                    <div className="w-[1px] shrink-0 bg-primary/20 self-stretch"></div>
 
                                     <button
                                         onClick={() => setWebSearchEnabled(false)}
