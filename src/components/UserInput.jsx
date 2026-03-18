@@ -28,6 +28,7 @@ const UserInput = forwardRef(({
     fileError,
     setFileError,
     acceptImageFile,
+    setLoadingPhase,
 }, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
@@ -228,6 +229,31 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
             //console.log(`[CONVERSATION HISTORY (before) TO BE SENT TO THE MODEL]: ${newHistory}`);
             return newHistory;
         });
+
+        let webSearchResult = null;
+        if (webSearchEnabled) {
+            setLoadingPhase("searching");
+            try {
+                const searchResponse = await fetch("https://n8n.athaahsan.com/webhook/tavily-tool", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userMessage: originalUserMessage,
+                        convHistory,
+                        userName,
+                        timeNow,
+                    }),
+                });
+                if (searchResponse.ok) {
+                    webSearchResult = await searchResponse.text() || null;
+                }
+            } catch (err) {
+                console.error("Web search failed:", err);
+            }
+        }
+
+        setLoadingPhase("thinking");
+
         const response = await fetch("/aiResponse", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -239,7 +265,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 userMessage: originalUserMessage,
                 listImageData: newListImageData,
                 imageLink,
-                webSearchEnabled,
+                webSearchResult,
             }),
         });
         let finalResponse = "";
@@ -291,6 +317,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
             }
         } finally {
             setResponseDone(true);
+            setLoadingPhase("");
             reader.cancel();
         }
         if (!finalResponse && aiReasoning) {

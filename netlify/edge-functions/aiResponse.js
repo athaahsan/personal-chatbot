@@ -5,7 +5,7 @@ export const config = {
 
 
 export default async (request, context) => {
-  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchEnabled } = await request.json();
+  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchResult  } = await request.json();
   const now = new Date(timeNow);
   const birthDate = new Date('2003-05-14');
   const calculateAge = (current, birth) => {
@@ -20,28 +20,6 @@ export default async (request, context) => {
     return age;
   };
   const devAge = calculateAge(now, birthDate);
-
-  let webSearchResult = null;
-
-  if (webSearchEnabled) {
-    try {
-      const searchResponse = await fetch("https://n8n.athaahsan.com/webhook/tavily-tool", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userMessage,
-          convHistory,
-          userName,
-          timeNow,
-        }),
-      });
-      if (searchResponse.ok) {
-        webSearchResult = await searchResponse.text() || null;
-      }
-    } catch (err) {
-      console.error("Web search failed:", err);
-    }
-  }
 
   const webSearchSection = (webSearchResult && webSearchResult !== "NO_SEARCH_NEEDED")
     ? `[WEB SEARCH RESULTS]:

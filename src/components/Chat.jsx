@@ -10,7 +10,7 @@ import "highlight.js/styles/github-dark.css";
 import { LiaTimesSolid } from "react-icons/lia";
 
 
-const Chat = ({ listMessage, listImagePreview }) => {
+const Chat = ({ listMessage, listImagePreview, loadingPhase }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
@@ -64,7 +64,15 @@ const Chat = ({ listMessage, listImagePreview }) => {
                 {i % 2 !== 0 && (
                   <div className="prose max-w-none">
                     {listMessage[listMessage.length - 1] === "" && i === listMessage.length - 1 ? (
-                      <span className="loading loading-dots loading-xl"></span>
+                      <div className="flex items-center gap-2 text-base-content/50 text-sm">
+                        {loadingPhase === "searching" ? (
+                          <div className='shimmer-text text-base'>
+                            Searching the web...
+                          </div>
+                        ) : (
+                          <span className="loading loading-dots loading-xl"></span>
+                        )}
+                      </div>
                     ) : (
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
@@ -98,11 +106,11 @@ const Chat = ({ listMessage, listImagePreview }) => {
                       </div>
                     )}
                     {msg &&
-                    <div className='wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] sm:max-w-[calc(100%-8rem)] rounded-tr-xs bg-base-content/10 rounded-2xl flex justify-end w-fit'>
-                      <div className='whitespace-pre-wrap'>
-                        {msg.trim()}
-                      </div>
-                    </div>}
+                      <div className='wrap-anywhere text-base px-4 py-3 ml-auto max-w-[calc(100%-4rem)] sm:max-w-[calc(100%-8rem)] rounded-tr-xs bg-base-content/10 rounded-2xl flex justify-end w-fit'>
+                        <div className='whitespace-pre-wrap'>
+                          {msg.trim()}
+                        </div>
+                      </div>}
                   </div>}
               </div>
             ))}
