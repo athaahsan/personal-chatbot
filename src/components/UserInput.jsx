@@ -39,6 +39,7 @@ const UserInput = forwardRef(({
     const [menu, setMenu] = useState("main");
     const [menuOpen, setMenuOpen] = useState(false);
     const [timeNow, setTimeNow] = useState('');
+    const [webSearchEnabled, setWebSearchEnabled] = useState(false);
     const textareaRef = useRef(null);
 
     const MAX_LENGTH = 5000;
@@ -174,7 +175,8 @@ const UserInput = forwardRef(({
         }
 
         setShowChat(true);
-        setResponseDone(false)
+        setResponseDone(false);
+        setWebSearchEnabled(false);
         const originalUserMessage = userMessage;
         const originalImagePreview = imagePreview;
         const imageData2 = imageData;
@@ -237,6 +239,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 userMessage: originalUserMessage,
                 listImageData: newListImageData,
                 imageLink,
+                webSearchEnabled,
             }),
         });
         let finalResponse = "";
@@ -287,7 +290,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 }
             }
         } finally {
-            setResponseDone(true)
+            setResponseDone(true);
             reader.cancel();
         }
         if (!finalResponse && aiReasoning) {
@@ -373,6 +376,31 @@ ASSISTANT: "${finalResponse}"
                                     <LiaTimesSolid size={12} style={{ strokeWidth: 1 }} />
                                     <span className="absolute inset-[-6px]" />
                                 </button>
+                            </motion.div>
+                        )}
+                        {webSearchEnabled && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.25, ease: "easeInOut" }}
+                            >
+                                <div className="badge badge-soft badge-primary p-0 overflow-hidden flex items-stretch gap-0">
+                                    <div className="flex items-center gap-1 px-2">
+                                        <PiGlobe size={16} />
+                                        Web search
+                                    </div>
+
+                                    <div className="w-[1px] shrink-0 bg-info/5 self-stretch"></div>
+
+                                    <button
+                                        onClick={() => setWebSearchEnabled(false)}
+                                        className="px-2 flex items-center hover:bg-neutral/25 bg-neutral/5 transition"
+                                    >
+                                        <LiaTimesSolid size={12} />
+                                    </button>
+
+                                </div>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -473,7 +501,12 @@ ASSISTANT: "${finalResponse}"
                                                     <PiGlobe size={20} />
                                                     <span className="px-0">Web search</span>
                                                 </div>
-                                                <input type="checkbox" className="toggle toggle-primary" disabled />
+                                                <input
+                                                    type="checkbox"
+                                                    className="toggle toggle-primary"
+                                                    checked={webSearchEnabled}
+                                                    onChange={(e) => setWebSearchEnabled(e.target.checked)}
+                                                />
                                             </div>
                                         </li>
                                     </ul>

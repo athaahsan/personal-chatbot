@@ -1,11 +1,11 @@
 export const config = {
   path: "/aiResponse",
-  streaming: true, // ⭐ THIS IS THE KEY
+  streaming: true,
 };
 
 
 export default async (request, context) => {
-  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink } = await request.json();
+  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchEnabled } = await request.json();
   const now = new Date(timeNow);
   const birthDate = new Date('2003-05-14');
   const calculateAge = (current, birth) => {
@@ -20,6 +20,35 @@ export default async (request, context) => {
     return age;
   };
   const devAge = calculateAge(now, birthDate);
+
+  let webSearchResult = null;
+
+  if (webSearchEnabled) {
+    try {
+      const searchResponse = await fetch("https://n8n.athaahsan.com/webhook/tavily-tool", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userMessage,
+          convHistory,
+          userName,
+          timeNow,
+        }),
+      });
+      if (searchResponse.ok) {
+        webSearchResult = await searchResponse.text() || null;
+      }
+    } catch (err) {
+      console.error("Web search failed:", err);
+    }
+  }
+
+  const webSearchSection = (webSearchResult && webSearchResult !== "NO_SEARCH_NEEDED")
+    ? `[WEB SEARCH RESULTS]:
+${webSearchResult}
+--- --- ---
+Use the above results to inform your response. Include the sources from the SOURCES section in your response.`
+    : "";
 
   const mappedListImageData = (imageLink !== null
     ? listImageData.slice(0, -2)
@@ -58,11 +87,12 @@ export default async (request, context) => {
 
 
   const system_prompt = `[SYSTEM]:
-You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information, or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if exist) for context. This assistant runs on OpenAI GPT-5.2-Chat via OpenRouter. It can accept both text and image file inputs. The app is hosted on Netlify, with the frontend deployed on Netlify and the backend powered by Netlify Functions. The "web search" feature has not been implemented by Atha yet, as it is considered costly and complex. This platform also cannot edit or generate images — it can only analyze or describe the images provided.
+You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information, or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if exist) for context. This assistant runs on OpenAI GPT-5.2-Chat via OpenRouter. It can accept both text and image file inputs. This platform has a web search feature powered by Tavily API, and when activated, it can retrieve information from the internet. The app is hosted on Netlify, with the frontend deployed on Netlify and the backend powered by Netlify Functions. This platform also cannot edit or generate images — it can only analyze or describe the images provided.
 
 [INSTRUCTIONS]:
 * Always respond in the same language the USER used.
 * Always respond with the tone aligned with [RESPONSE STYLE].
+* If [WEB SEARCH RESULTS] are provided in the user prompt, use them to inform your response and include the sources somewhere in your response as markdown links.
 * If the USER asks something about Atha:
   * Answer ONLY based on the [DATA Atha] section. 
   * You may perform logical reasoning or simple calculations using the provided data.
@@ -235,7 +265,10 @@ ${convHistory}`;
 ${!userName.trim() ? "!!! EMPTY, PLEASE ASK THE USER TO INPUT THEIR NAME VIA THE BUTTON ON THE BOTTOM LEFT OF THE TEXT INPUT !!!" : userName}
 
 [USER MESSAGE (JUST SENT)]:
-${userMessage}`;
+${userMessage}
+
+${webSearchSection}
+`;
   //----------------------------------------------------------------
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
@@ -293,6 +326,7 @@ ${userMessage}`;
       "Content-Encoding": "identity",
       "Transfer-Encoding": "chunked",
       "X-Accel-Buffering": "no",
+      "X-Web-Search-Result": webSearchSection ? encodeURIComponent(webSearchSection) : "null",
     },
   });
 
