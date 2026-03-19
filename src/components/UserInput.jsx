@@ -246,7 +246,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 });
                 if (searchResponse.ok) {
                     const searchData = await searchResponse.json();
-                    webSearchResult = searchData?.results?.length ? JSON.stringify(searchData.results) : null;
+                    webSearchResult = searchData ? JSON.stringify(searchData) : null;
                 }
             } catch (err) {
                 console.error("Web search failed:", err);
