@@ -5,7 +5,7 @@ export const config = {
 
 
 export default async (request, context) => {
-  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchResult  } = await request.json();
+  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchResult } = await request.json();
   const now = new Date(timeNow);
   const birthDate = new Date('2003-05-14');
   const calculateAge = (current, birth) => {
@@ -21,7 +21,7 @@ export default async (request, context) => {
   };
   const devAge = calculateAge(now, birthDate);
 
-  const webSearchSection = (webSearchResult && webSearchResult !== "NO_SEARCH_NEEDED")
+  const webSearchSection = webSearchResult
     ? `[WEB SEARCH RESULTS]:
 ${webSearchResult}
 Use the above results to inform your response. Each result contains a url, title, and content. Include relevant sources as markdown links in your response.`
@@ -303,7 +303,7 @@ ${webSearchSection}
       "Content-Encoding": "identity",
       "Transfer-Encoding": "chunked",
       "X-Accel-Buffering": "no",
-      "X-Web-Search-Result": webSearchSection ? encodeURIComponent(webSearchSection) : "null",
+      "X-Web-Search-Section": webSearchSection ? encodeURIComponent(webSearchSection) : "null",
     },
   });
 

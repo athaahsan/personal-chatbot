@@ -66,7 +66,7 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase }) => {
                     {listMessage[listMessage.length - 1] === "" && i === listMessage.length - 1 ? (
                       <div className="flex items-center gap-2 text-base-content/50 text-sm">
                         {loadingPhase === "searching" ? (
-                          <div className='shimmer-text text-base'>
+                          <div className='shimmer-text text-sm'>
                             Searching the web...
                           </div>
                         ) : (
