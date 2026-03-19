@@ -90,7 +90,7 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
                               setOpenAccordions(prev => ({ ...prev, [i]: !prev[i] }));
                             }}
                           >
-                            <div className="flex items-center justify-start gap-1">
+                            <div className="flex items-center justify-start gap-1 font-light">
                               <span>Searched the web</span>
                               <svg
                                 className={`w-3.5 h-3.5 transition-transform duration-300 flex-shrink-0 ${openAccordions[i] ? 'rotate-90' : ''}`}
