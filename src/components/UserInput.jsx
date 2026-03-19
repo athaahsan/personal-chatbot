@@ -29,6 +29,8 @@ const UserInput = forwardRef(({
     setFileError,
     acceptImageFile,
     setLoadingPhase,
+    listWebSearchResult,
+    setListWebSearchResult,
 }, ref) => {
     const messages = ["about Atha...", "anything..."];
     const [userMessage, setUserMessage] = useState(``);
@@ -182,6 +184,8 @@ const UserInput = forwardRef(({
         const originalImagePreview = imagePreview;
         const imageData2 = imageData;
         let originalImageData = null;
+        let webSearchResult = null;
+
 
         setUserMessage("");
         setImagePreview(null);
@@ -189,6 +193,7 @@ const UserInput = forwardRef(({
 
         setListMessage(prev => [...prev, originalUserMessage, '']);
         setListImagePreview(prev => [...prev, originalImagePreview, null]);
+        setListWebSearchResult(prev => [...prev, null, null]);
 
         if (imageData2) {
             try {
@@ -230,7 +235,6 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
             return newHistory;
         });
 
-        let webSearchResult = null;
         if (webSearchEnabled) {
             setLoadingPhase("searching");
             try {
@@ -255,6 +259,12 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
         }
         console.log("Web Search Result:", webSearchResult);
         setLoadingPhase("thinking");
+
+        setListWebSearchResult(prev => {
+            const newResults = [...prev];
+            newResults[newResults.length - 1] = webSearchResult;
+            return newResults;
+        });
 
         const response = await fetch("/aiResponse", {
             method: "POST",

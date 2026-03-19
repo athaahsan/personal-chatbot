@@ -25,6 +25,8 @@ function App() {
   const [fileError, setFileError] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [loadingPhase, setLoadingPhase] = useState(""); // "searching" | "thinking" | ""
+  const [listWebSearchResult, setListWebSearchResult] = useState([]);
+
 
 
   const dragCounter = useRef(0);
@@ -179,7 +181,7 @@ function App() {
               <Welcoming userName={userName} setUsername={setUserName} />
             )}
             {showChat && (
-              <Chat listMessage={listMessage} listImagePreview={listImagePreview} loadingPhase={loadingPhase} />
+              <Chat listMessage={listMessage} listImagePreview={listImagePreview} listWebSearchResult={listWebSearchResult} loadingPhase={loadingPhase} />
             )}
             <UserInput
               ref={inputRef}
@@ -202,6 +204,8 @@ function App() {
               setShowChat={setShowChat}
               acceptImageFile={acceptImageFile}
               setLoadingPhase={setLoadingPhase}
+              listWebSearchResult={listWebSearchResult}
+              setListWebSearchResult={setListWebSearchResult}
             />
 
             <AnimatePresence>

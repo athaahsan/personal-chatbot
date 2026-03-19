@@ -89,7 +89,7 @@ const Welcoming = ({ userName, setUsername }) => {
                         <div className='flex flex-row justify-center items-center'>
                             <div className=''>
                                 <img
-                                    className="mask mask-circle h-20 w-20 sm:h-24 sm:w-24 my-2"
+                                    className="mask mask-circle h-18 w-18 sm:h-22 sm:w-22 my-2"
                                     src={profilePic}
                                 />
                             </div>
