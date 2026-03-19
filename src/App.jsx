@@ -106,18 +106,16 @@ function App() {
 
   const handleDragEnter = (e) => {
     e.preventDefault();
-    dragCounter.current += 1;
-    setIsDragging(true);
+    e.stopPropagation();
+    dragCounter.current++;
+    if (dragCounter.current === 1) setIsDragging(true);
   };
 
   const handleDragLeave = (e) => {
     e.preventDefault();
-    dragCounter.current -= 1;
-
-    if (dragCounter.current <= 0) {
-      setIsDragging(false);
-      dragCounter.current = 0;
-    }
+    e.stopPropagation();
+    dragCounter.current--;
+    if (dragCounter.current === 0) setIsDragging(false);
   };
 
   const handleDragOver = (e) => {

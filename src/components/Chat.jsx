@@ -12,13 +12,20 @@ import { LiaTimesSolid } from "react-icons/lia";
 
 const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-
+  const [openAccordions, setOpenAccordions] = useState({});
+  const parseWebSearchData = (data) => {
+  if (!data) return null;
+  try {
+    return typeof data === 'string' ? JSON.parse(data) : data;
+  } catch (e) {
+    return null;
+  }
+};
 
   return (
     <div className='px-5.5 flex-1'>
-      {selectedImage && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {selectedImage && (
           <motion.div
             key="overlay"
             className="fixed inset-0 bg-black/80 flex items-center justify-center z-500"
@@ -48,8 +55,8 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
               </button>
             </motion.div>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
 
       <motion.div
         initial={{ filter: "blur(10px)" }}
@@ -60,6 +67,7 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
           <div className="flex flex-col gap-10 w-full">
             {listMessage.map((msg, i) => {
               const webSearchData = listWebSearchResult[i];
+              const webSearchParsed = parseWebSearchData(webSearchData);
               return (
                 <div
                   key={i}
@@ -71,21 +79,21 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
                         <div className="collapse bg-base-200 rounded-none">
                           <input
                             type="checkbox"
-                            checked={isAccordionOpen}
-                            onChange={(e) => setIsAccordionOpen(e.target.checked)}
+                            checked={openAccordions[i] || false}
+                            onChange={(e) => setOpenAccordions(prev => ({ ...prev, [i]: e.target.checked }))}
                             className="peer pointer-events-none"
                           />
                           <div
                             className="collapse-title text-sm cursor-pointer p-0 text-base-content/60 hover:text-base-content transition-colors duration-200"
                             onClick={(e) => {
                               e.preventDefault();
-                              setIsAccordionOpen(!isAccordionOpen);
+                              setOpenAccordions(prev => ({ ...prev, [i]: !prev[i] }));
                             }}
                           >
                             <div className="flex items-center justify-start gap-1">
                               <span>Searched the web</span>
                               <svg
-                                className={`w-3.5 h-3.5 transition-transform duration-300 flex-shrink-0 ${isAccordionOpen ? 'rotate-90' : ''}`}
+                                className={`w-3.5 h-3.5 transition-transform duration-300 flex-shrink-0 ${openAccordions[i] ? 'rotate-90' : ''}`}
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -94,59 +102,42 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
                               </svg>
                             </div>
                           </div>
-                          <div className={`collapse-content text-sm p-0 m-0 transition-all duration-500 overflow-hidden ${isAccordionOpen
-                              ? 'animate-[slideDown_0.5s_ease] max-h-[1000px] opacity-100'
-                              : 'animate-[slideUp_0.5s_ease] max-h-0 opacity-0'
+                          <div className={`collapse-content text-sm p-0 m-0 transition-all duration-500 overflow-hidden ${openAccordions[i]
+                            ? 'animate-[slideDown_0.5s_ease] max-h-[1000px] opacity-100'
+                            : 'animate-[slideUp_0.5s_ease] max-h-0 opacity-0'
                             }`}>
                             <div className="m-0">
                               <div className="border border-base-content/10 rounded-lg p-4 bg-base-100 mb-2">
                                 {/* Query */}
                                 <div className="mb-2 pb-2">
                                   <p className="text-sm text-base-content/60">
-                                    {(() => {
-                                      try {
-                                        const parsed = typeof webSearchData === 'string' ? JSON.parse(webSearchData) : webSearchData;
-                                        return parsed.query;
-                                      } catch (e) {
-                                        return "Web search results";
-                                      }
-                                    })()}
+                                    {webSearchParsed?.query || "Web search results"}
                                   </p>
                                 </div>
 
                                 {/* URLs */}
-                                {(() => {
-                                  try {
-                                    const parsed = typeof webSearchData === 'string' ? JSON.parse(webSearchData) : webSearchData;
-                                    if (parsed.results && parsed.results.length > 0) {
-                                      return (
-                                        <div className="space-y-2">
-                                          {parsed.results.map((result, idx) => (
-                                            <a
-                                              key={idx}
-                                              href={result.url}
-                                              target="_blank"
-                                              rel="noopener noreferrer"
-                                              className="flex items-center justify-between p-2 rounded-lg bg-primary/5 border border-base-content/10 hover:border-primary hover:bg-primary/5 transition group gap-2"
-                                            >
-                                              <div className="flex-1 min-w-0">
-                                                <div className="text-xs font-medium text-base-content transition line-clamp-1">
-                                                  {result.title}
-                                                </div>
-                                              </div>
-                                              <div className="text-xs text-primary/80 group-hover:text-primary transition whitespace-nowrap flex-shrink-0 ml-2">
-                                                {new URL(result.url).hostname}
-                                              </div>
-                                            </a>
-                                          ))}
+                                {webSearchParsed?.results && webSearchParsed.results.length > 0 && (
+                                  <div className="space-y-2">
+                                    {webSearchParsed.results.map((result, idx) => (
+                                      <a
+                                        key={idx}
+                                        href={result.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-between p-2 rounded-lg bg-primary/5 border border-base-content/10 hover:border-primary hover:bg-primary/5 transition group gap-2"
+                                      >
+                                        <div className="flex-1 min-w-0">
+                                          <div className="text-xs font-medium text-base-content transition line-clamp-1">
+                                            {result.title}
+                                          </div>
                                         </div>
-                                      );
-                                    }
-                                    return null;
-                                  } catch (e) {
-                                    return <pre className="text-xs whitespace-pre-wrap break-words">{String(webSearchData)}</pre>;
-                                  }
-                                })()}
+                                        <div className="text-xs text-primary/80 group-hover:text-primary transition whitespace-nowrap flex-shrink-0 ml-2">
+                                          {new URL(result.url).hostname}
+                                        </div>
+                                      </a>
+                                    ))}
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
