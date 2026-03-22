@@ -430,13 +430,11 @@ ASSISTANT: "${finalResponse}"
                                         Web search
                                     </div>
 
-                                    <div className="w-[1px] shrink-0 bg-primary/20 self-stretch"></div>
-
                                     <button
                                         onClick={() => setWebSearchEnabled(false)}
-                                        className="px-1.5 flex items-center hover:bg-error/25 bg-error/10 transition"
+                                        className="px-1.5 flex hover:bg-error/25 items-center transition"
                                     >
-                                        <LiaTimesSolid size={12} />
+                                        <LiaTimesSolid size={14} />
                                     </button>
 
                                 </div>
