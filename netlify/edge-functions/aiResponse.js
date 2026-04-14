@@ -277,20 +277,6 @@ ${webSearchSection}
           ],
         }
       ],
-      /*
-      provider: {
-        order: [
-          'novita',
-          'fireworks',
-          'deepinfra/fp4',
-        ],
-        allow_fallbacks: false
-      },
-      reasoning: {
-        effort: 'high',
-        exclude: false,
-      },
-      */
       stream: true,
     }),
   });
