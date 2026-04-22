@@ -40,7 +40,7 @@ const Welcoming = ({ userName, setUsername }) => {
 
                     <div className='flex flex-col my-[50dvh] gap-2 flex items-center justify-center snap-center snap-always'>
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='shimmer-text'>
+                            <div className='font-extralight'>
                                 Hi,&nbsp;
                             </div>
                             <div className={`flex items-center relative inline-flex ${!userName ? 'tooltip tooltip-open' : ""}`} data-tip="Type your name">
@@ -72,26 +72,34 @@ const Welcoming = ({ userName, setUsername }) => {
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='shimmer-text'>Ask me anything</div>
+                            <div className='font-extralight'>Ask me anything</div>
                             <div className=''>&nbsp;✨</div>
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='shimmer-text'>Or, if you're curious</div>
+                            <div className='font-extralight'>Or, if you're curious</div>
                             <div className=''>&nbsp;🤔</div>
                         </div>
 
                         <div className='flex flex-row justify-center items-center'>
-                            <div className='shimmer-text'>Ask me about him</div>
+                            <div className='font-extralight'>Ask me about him</div>
                             <p className="">&nbsp;👇</p>
                         </div>
 
-                        <div className='flex flex-row justify-center items-center'>
-                            <div className=''>
-                                <img
-                                    className="mask mask-circle h-18 w-18 sm:h-22 sm:w-22 my-2"
-                                    src={profilePic}
-                                />
+                        <div className='flex flex-row justify-center items-center mt-1'>
+                            <div className="relative group">
+                                <div className="absolute inset-0 pointer-events-none bg-secondary/30 blur-2xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+                                <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full p-[2px] bg-gradient-to-tr from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-all duration-300 shadow-md">
+                                    <img
+                                        className="w-full h-full object-cover rounded-full border-2 border-base-100"
+                                        src={profilePic}
+                                        alt="Profile"
+                                    />
+                                    <div className="absolute -bottom-1 -right-1 text-base sm:text-xl bg-base-100 rounded-full shadow-lg w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center ring-2 ring-base-100 z-10 transition-transform duration-300 group-hover:scale-110">
+                                        ✌️
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
