@@ -22,7 +22,7 @@ const Welcoming = ({ userName, setUsername }) => {
     useLayoutEffect(() => {
         if (!spanRef.current) return;
         const updateWidth = () => {
-            setInputWidth(spanRef.current.offsetWidth + 2);
+            setInputWidth(spanRef.current.offsetWidth + 3);
         };
         updateWidth();
         if (document.fonts) {
