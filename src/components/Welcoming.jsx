@@ -88,15 +88,26 @@ const Welcoming = ({ userName, setUsername }) => {
 
                         <div className='flex flex-row justify-center items-center mt-1'>
                             <div className="relative group">
-                                <div className="absolute inset-0 pointer-events-none bg-secondary/30 blur-2xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                                <motion.div 
+                                    animate={{ 
+                                        scale: [1.5, 2, 1.5],
+                                        opacity: [0.5, 1, 0.5]
+                                    }}
+                                    transition={{ 
+                                        duration: 3, 
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                    className="absolute inset-0 pointer-events-none bg-secondary/50 blur-2xl rounded-full"
+                                />
 
-                                <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full p-[2px] bg-gradient-to-tr from-primary/50 to-secondary/50 group-hover:from-primary group-hover:to-secondary transition-all duration-300 shadow-md">
+                                <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full p-[2px] bg-gradient-to-tr from-primary/50 to-secondary/50 transition-all duration-300 shadow-md">
                                     <img
                                         className="w-full h-full object-cover rounded-full border-2 border-base-100"
                                         src={profilePic}
                                         alt="Profile"
                                     />
-                                    <div className="absolute -bottom-1 -right-1 text-base sm:text-xl bg-base-100 rounded-full shadow-lg w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center ring-2 ring-base-100 z-10 transition-transform duration-300 group-hover:scale-110">
+                                    <div className="absolute -bottom-1 -right-1 text-base sm:text-xl bg-base-100 rounded-full shadow-lg w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center ring-2 ring-base-100 z-10 transition-transform duration-300">
                                         ✌️
                                     </div>
                                 </div>
