@@ -257,7 +257,7 @@ ${webSearchSection}
       "Accept": "text/event-stream",
     },
     body: JSON.stringify({
-      model: "openai/gpt-5.2-chat",
+      model: "openai/gpt-5.4-mini",
       messages: [
         {
           role: 'system',
