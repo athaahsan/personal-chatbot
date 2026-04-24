@@ -178,7 +178,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
       * [JiddyClips](https://www.youtube.com/@JiddyClips-67)
       * [MoodaClips](https://www.youtube.com/@MoodaClips-67)
     * Tech Stack: n8n, FFmpeg, Twitch API, ElevenLabs API
-* Technical Skills: n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
+* Technical Skills: OpenClaw, n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
 * Current Professional Status: Employed as a Data Scientist at PT Beon Intermedia (since January 2026)
 * Profiles:
   * [Email](mailto:atha.ahsan.xavier.haris@gmail.com)
