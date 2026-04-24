@@ -132,7 +132,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Contract at PT Beon Intermedia as Business Development Officer - Data Scientist Function (January 2026 - Present)
     * Designed and maintained n8n-based automation workflows for SaaS products and internal operations.
     * Integrated LLM capabilities into automation workflows, performing prompt engineering and AI-driven logic.
-    * Occasionally combined n8n with Google Apps Script (GAS) to enable dynamic, user-specific credentials in SaaS systems.
+    * Configured OpenClaw to enable agentic AI assistance across internal teams, supporting task execution and decision-making processes.
   * Internship at PT ARM Solusi as Frontend Web Developer (June 2024 - August 2024)
     * Developed the web-based provisioning form for PT ARM Solusi's COOFIS.
     * Focused on frontend development using React.js, Material UI, and Git for collaboration.
@@ -170,6 +170,14 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions, with web search capability powered by Tavily API via n8n. This chatbot is the one currently in use by the USER.
     * Tech Stack: OpenRouter (LLM Integration), n8n, React.js, Tailwind CSS, DaisyUI
+  * Video Clipping Automation System
+    * Developed an automated video clipping pipeline using n8n, integrating the Twitch API to retrieve content and process clips into short-form videos.
+    * Utilized FFmpeg for video processing and ElevenLabs for word-level transcription to generate synchronized subtitles.
+    * Automated an end-to-end workflow for collecting Twitch clips via API, generating subtitles, and publishing short-form videos to YouTube.
+    * Deployed and managed multiple YouTube channels distributing generated content:
+      * [JiddyClips](https://www.youtube.com/@JiddyClips-67)
+      * [MoodaClips](https://www.youtube.com/@MoodaClips-67)
+    * Tech Stack: n8n, FFmpeg, Twitch API, ElevenLabs API
 * Technical Skills: n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
 * Current Professional Status: Employed as a Data Scientist at PT Beon Intermedia (since January 2026)
 * Profiles:
