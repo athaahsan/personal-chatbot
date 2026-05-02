@@ -163,13 +163,13 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Skills: HTML, Cascading Style Sheets (CSS), JavaScript, React.js, Bootstrap (Framework), Git, Figma (Software), UI UX
 * Projects:
   * Crypto Dashboard
-    * Developed a real-time cryptocurrency dashboard with an AI Insight module that analyzes engineered technical indicators and market sentiment to generate a structured daily market bias using the CoinDesk Index API and Fear & Greed Index API. The dashboard provides a link to a Telegram bot where users can subscribe to receive automated daily BTC technical and AI-generated market insights.
-    * [Demo](https://atha-crypto-dashboard.streamlit.app/)
+    * Developed a real-time cryptocurrency analytics dashboard with an AI Insight module that generates structured buy/hold/sell market reasoning using Binance, Alternative.me, CoinGecko, and OpenRouter APIs. The dashboard provides a link to a Telegram bot where users can subscribe to receive automated daily BTC technical and AI-generated market insights.
+    * [Demo](https://crypto.athaahsan.com/)
     * [Telegram Bot](https://t.me/dailybtcinsightbot)
-    * Tech Stack: Streamlit, Python, Pandas, Plotly, OpenRouter (LLM Integration), Google Apps Script (automation)
+    * Tech Stack: React.js, Tailwind CSS, DaisyUI, Google Apps Script, OpenRouter, Netlify
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions, with web search capability powered by Tavily API via n8n. This chatbot is the one currently in use by the USER.
-    * Tech Stack: OpenRouter (LLM Integration), n8n, React.js, Tailwind CSS, DaisyUI
+    * Tech Stack: React.js, Tailwind CSS, DaisyUI, OpenRouter, n8n, Netlify
   * Video Clipping Automation System
     * Developed an automated video clipping pipeline using n8n, integrating the Twitch API to retrieve content and process clips into short-form videos.
     * Utilized FFmpeg for video processing and ElevenLabs for word-level transcription to generate synchronized subtitles.
