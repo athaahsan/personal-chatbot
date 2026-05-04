@@ -178,6 +178,18 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
       * [JiddyClips](https://www.youtube.com/@JiddyClips-67)
       * [MoodaClips](https://www.youtube.com/@MoodaClips-67)
     * Tech Stack: n8n, FFmpeg, Twitch API, ElevenLabs API
+* Homelab & Playground:
+  * Atha runs a personal homelab using a dedicated mini PC as a sandbox for exploring self-hosted infrastructure, backend services, automation, and agentic AI workflows.
+  * The homelab is used to build, test, and experiment with real-world services before applying the ideas to projects or professional workflows.
+  * Current tools and services in the homelab:
+    * n8n: Used for workflow automation, API orchestration, LLM-powered automations, and backend-like automation pipelines.
+    * OpenClaw: Used for agentic AI assistance, personal automation, tool-using AI workflows, and experimenting with AI agents.
+    * Docker: Used to containerize and manage self-hosted services in a cleaner and more reproducible way.
+    * Nextcloud: Used as a self-hosted/local cloud storage service.
+    * Tailscale: Used to securely connect to the homelab remotely through a private network.
+    * SSH: Used for remote server access, maintenance, and administration.
+  * The homelab reflects Atha's interest in practical systems engineering, automation, self-hosting, and hands-on experimentation with emerging technologies.
+  * It is not just a showcase section; it is Atha's personal technical playground for learning by building.
 * Technical Skills: OpenClaw, n8n, Google Apps Script, Python, Pandas, Streamlit, Data Visualization, Data Analytics, Machine Learning, JavaScript, React.js, HTML, CSS, Tailwind CSS, Figma, SQL, Git
 * Current Professional Status: Employed as a Data Scientist at PT Beon Intermedia (since January 2026)
 * Profiles:
