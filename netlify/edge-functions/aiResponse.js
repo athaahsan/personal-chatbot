@@ -163,7 +163,7 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Skills: HTML, Cascading Style Sheets (CSS), JavaScript, React.js, Bootstrap (Framework), Git, Figma (Software), UI UX
 * Projects:
   * Crypto Dashboard
-    * Developed a real-time cryptocurrency analytics dashboard with an AI Insight module that generates structured buy/hold/sell market reasoning using Binance, Alternative.me, CoinGecko, and OpenRouter APIs. The dashboard provides a link to a Telegram bot where users can subscribe to receive automated daily BTC technical and AI-generated market insights.
+    * Developed a real-time cryptocurrency analytics dashboard with an AI Insight module that generates structured buy/hold/sell market reasoning using Binance (Market Data), Alternative.me (Sentiment), Cointelegraph RSS (News), OpenRouter (AI Insights) APIs. The dashboard provides a link to a Telegram bot where users can subscribe to receive automated daily BTC technical and AI-generated market insights.
     * [Demo](https://crypto.athaahsan.com/)
     * [Telegram Bot](https://t.me/dailybtcinsightbot)
     * Tech Stack: React.js, Tailwind CSS, DaisyUI, Google Apps Script, OpenRouter, Netlify
