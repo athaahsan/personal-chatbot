@@ -170,14 +170,13 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
   * Personal Chatbot
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions, with web search capability powered by Tavily API via n8n. This chatbot is the one currently in use by the USER.
     * Tech Stack: React.js, Tailwind CSS, DaisyUI, OpenRouter, n8n, Netlify
-  * Video Clipping Automation System
-    * Developed an automated video clipping pipeline using n8n, integrating the Twitch API to retrieve content and process clips into short-form videos.
-    * Utilized FFmpeg for video processing and ElevenLabs for word-level transcription to generate synchronized subtitles.
-    * Automated an end-to-end workflow for collecting Twitch clips via API, generating subtitles, and publishing short-form videos to YouTube.
+  * Short-Form Video Automation System
+    * Built an automated pipeline for collecting Twitch clips, processing them into short-form videos, generating synchronized subtitles, and publishing them to YouTube.
+    * Integrated n8n, Twitch API, FFmpeg, and Groq API to automate clip retrieval, video processing, transcription, and subtitle generation.
     * Deployed and managed multiple YouTube channels distributing generated content:
       * [JiddyClips](https://www.youtube.com/@JiddyClips-67)
       * [MoodaClips](https://www.youtube.com/@MoodaClips-67)
-    * Tech Stack: n8n, FFmpeg, Twitch API, ElevenLabs API
+    * Tech Stack: n8n, FFmpeg, Twitch API, Groq API
 * Homelab & Playground:
   * Atha runs a personal homelab using a dedicated mini PC as a sandbox for exploring self-hosted infrastructure, backend services, automation, and agentic AI workflows.
   * The homelab is used to build, test, and experiment with real-world services before applying the ideas to projects or professional workflows.
