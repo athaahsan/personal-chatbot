@@ -232,12 +232,13 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * Developed a personal assistant chatbot designed to answer questions about Atha using structured data and handle any other questions, with web search capability powered by Tavily API via n8n. This chatbot is the one currently in use by the USER.
     * Tech Stack: React.js, Tailwind CSS, DaisyUI, OpenRouter, n8n, Netlify
   * Short-Form Video Automation System
-    * Built an automated pipeline for collecting Twitch clips, processing them into short-form videos, generating synchronized subtitles, and publishing them to YouTube.
-    * Integrated n8n, Twitch API, FFmpeg, and Groq API to automate clip retrieval, video processing, transcription, and subtitle generation.
+    * Built an automated Twitch-to-YouTube Shorts pipeline that collects Twitch clips, checks whether clips were already processed, converts them into vertical short-form videos, generates synchronized subtitles, and publishes the finished videos to YouTube.
+    * Integrated n8n, Twitch API, FFmpeg, Groq STT, Supabase, and YouTube API to automate clip retrieval, deduplication, video processing, transcription, subtitle generation, publishing, and cleanup.
+    * Uses Supabase to store processed Twitch clip IDs, preventing duplicate uploads and making the workflow more reliable for repeated scheduled runs.
     * Deployed and managed multiple YouTube channels distributing generated content:
       * [JiddyClips](https://www.youtube.com/@JiddyClips-67)
       * [MoodaClips](https://www.youtube.com/@MoodaClips-67)
-    * Tech Stack: n8n, FFmpeg, Twitch API, Groq API
+    * Tech Stack: n8n, FFmpeg, Twitch API, Groq STT, Supabase, YouTube API
 * Homelab & Playground:
   * Atha runs a personal homelab using a dedicated mini PC as a sandbox for exploring self-hosted infrastructure, backend services, automation, and agentic AI workflows.
   * The homelab is used to build, test, and experiment with real-world services before applying the ideas to projects or professional workflows.
