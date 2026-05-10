@@ -98,7 +98,7 @@ const Welcoming = ({ userName, setUsername }) => {
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
-                                    className="absolute inset-0 pointer-events-none bg-secondary/50 blur-2xl rounded-full"
+                                    className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-primary/40 to-secondary/40 blur-2xl rounded-full"
                                 />
 
                                 <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full p-[2px] bg-gradient-to-tr from-primary/50 to-secondary/50 transition-all duration-300 shadow-md">

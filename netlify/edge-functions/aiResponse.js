@@ -2,10 +2,71 @@ export const config = {
   path: "/aiResponse",
   streaming: true,
 };
+// Simple in-memory rate limiting (Persists per edge node isolate)
+const ipTracker = new Map();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute window
+const MAX_REQUESTS_PER_WINDOW = 15; // 15 requests per minute
+
+const sendErrorStream = (message) => {
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream({
+    start(controller) {
+      const data = JSON.stringify({
+        choices: [{ delta: { content: message } }],
+      });
+      controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+      controller.enqueue(encoder.encode(`data: [DONE]\n\n`));
+      controller.close();
+    },
+  });
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-cache, no-transform",
+      "Connection": "keep-alive",
+    },
+  });
+};
 
 
 export default async (request, context) => {
-  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchResult } = await request.json();
+  // 1. Basic Rate Limiting
+  const ip = context.ip || "unknown";
+  if (ip !== "unknown") {
+    const nowMs = Date.now();
+    const tracker = ipTracker.get(ip);
+    if (!tracker || (nowMs - tracker.startTime > RATE_LIMIT_WINDOW_MS)) {
+      ipTracker.set(ip, { count: 1, startTime: nowMs });
+    } else {
+      tracker.count += 1;
+      if (tracker.count > MAX_REQUESTS_PER_WINDOW) {
+        return sendErrorStream("⚠️ **System:** You are sending messages too quickly. Please wait a minute and try again.");
+      }
+    }
+    // Prevent memory leaks in the isolate
+    if (ipTracker.size > 1000) ipTracker.clear();
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch (err) {
+    return sendErrorStream("⚠️ **System:** Invalid request payload.");
+  }
+
+  const { timeNow, responseStylePrompt, convHistory, userName, userMessage, listImageData, imageLink, webSearchResult } = body;
+
+  // 2. Payload size protections (Backend validations)
+  if (userMessage && userMessage.length > 6000) {
+    return sendErrorStream("⚠️ **System:** Your message is too long. Please keep it under 5000 characters.");
+  }
+  if (convHistory && convHistory.length > 80000) {
+    return sendErrorStream("⚠️ **System:** Conversation history is too long. Please refresh the page to start a new chat.");
+  }
+  if (listImageData && listImageData.length > 10) {
+    return sendErrorStream("⚠️ **System:** Too many images in history. Please refresh the page to start a new chat.");
+  }
+
   const now = new Date(timeNow);
   const birthDate = new Date('2003-05-14');
   const calculateAge = (current, birth) => {
