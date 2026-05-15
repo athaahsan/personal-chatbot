@@ -222,6 +222,10 @@ Atha is the creator of this chatbot app. He graduated from Telkom University, Ba
     * [Credential URL](https://www.coursera.org/account/accomplishments/specialization/QT8SKSWXSVBM)
     * Certificate image: ![Meta Front-End Developer Certificate](https://raw.githubusercontent.com/athaahsan/personal-chatbot/refs/heads/main/src/assets/Coursera-QT8SKSWXSVBM.jpg)
     * Skills: HTML, Cascading Style Sheets (CSS), JavaScript, React.js, Bootstrap (Framework), Git, Figma (Software), UI UX
+* Recognition:
+  * Verified n8n Creator
+    * Recognized as an official verified workflow creator on the n8n creator platform.
+    * Creator profile: [n8n.io/creators/athaahsan](https://n8n.io/creators/athaahsan/)
 * Projects:
   * Crypto Dashboard
     * Developed a real-time cryptocurrency analytics dashboard with an AI Insight module that generates structured buy/hold/sell market reasoning using Binance (Market Data), Alternative.me (Sentiment), Cointelegraph RSS (News), OpenRouter (AI Insights) APIs. The dashboard provides a link to a Telegram bot where users can subscribe to receive automated daily BTC technical and AI-generated market insights.
