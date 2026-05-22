@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/github-dark.css";
 import { LiaTimesSolid } from "react-icons/lia";
 
@@ -157,7 +158,7 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
                         ) : (
                           <ReactMarkdown
                             remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
-                            rehypePlugins={[rehypeHighlight, rehypeKatex]}
+                            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeKatex]}
                             components={{
                               img: ({ node, ...props }) => (
                                 <img
