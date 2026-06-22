@@ -118,7 +118,7 @@ const Chat = ({ listMessage, listImagePreview, loadingPhase, listWebSearchResult
 
                                 {/* URLs */}
                                 {webSearchParsed?.results && webSearchParsed.results.length > 0 && (
-                                  <div className="space-y-2">
+                                  <div className="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
                                     {webSearchParsed.results.map((result, idx) => (
                                       <a
                                         key={idx}

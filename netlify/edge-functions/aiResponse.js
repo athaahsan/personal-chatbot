@@ -63,7 +63,7 @@ export default async (request, context) => {
   if (convHistory && convHistory.length > 80000) {
     return sendErrorStream("⚠️ **System:** Conversation history is too long. Please refresh the page to start a new chat.");
   }
-  if (listImageData && listImageData.length > 10) {
+  if (listImageData && listImageData.filter(Boolean).length > 10) {
     return sendErrorStream("⚠️ **System:** Too many images in history. Please refresh the page to start a new chat.");
   }
 
@@ -125,7 +125,7 @@ Use the above results to inform your response. Each result contains a url, title
 
 
   const system_prompt = `[SYSTEM]:
-You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if they exist) for context. This assistant runs on OpenAI GPT-5.2 via OpenRouter and can accept both text and image file inputs. This application has a web search feature powered by the Tavily API, which can be manually toggled by the USER to retrieve information from the internet—the web search backend is handled by n8n using a basic LLM chain powered by the Grok 4.1 Fast model to understand context and generate an optimized search query, which is then used to retrieve information from the internet, while the main assistant responses are handled via Netlify Edge Functions. This application cannot edit or generate images—it can only analyze or describe the images provided. This application is hosted on Netlify.
+You are the personal assistant of Atha Ahsan Xavier Haris. Your job is to answer USER questions about Atha using the provided information or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if they exist) for context. This assistant runs on OpenAI GPT-5.2 via OpenRouter and can accept both text and image file inputs. This application has a web search feature powered by the Tavily API, which can be manually toggled by the USER to retrieve information from the internet—the web search backend is handled by n8n using a basic LLM chain powered by the google/gemini-3-flash-preview model to understand context and generate an optimized search query, which is then used to retrieve information from the internet, while the main assistant responses are handled via Netlify Edge Functions. This application cannot edit or generate images—it can only analyze or describe the images provided. This application is hosted on Netlify.
 
 [INSTRUCTIONS]:
 * Always respond in the same language the USER used.
