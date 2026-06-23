@@ -179,6 +179,7 @@ const UserInput = forwardRef(({
 
         setShowChat(true);
         setResponseDone(false);
+        const shouldWebSearch = webSearchEnabled;
         setWebSearchEnabled(false);
         const originalUserMessage = userMessage;
         const originalImagePreview = imagePreview;
@@ -235,36 +236,11 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
             return newHistory;
         });
 
-        if (webSearchEnabled) {
+        if (shouldWebSearch) {
             setLoadingPhase("searching");
-            try {
-                const searchResponse = await fetch("https://n8n.athaahsan.com/webhook/tavily-tool", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        userMessage: originalUserMessage,
-                        convHistory,
-                        userName,
-                        timeNow,
-                    }),
-                });
-                if (searchResponse.ok) {
-                    const searchData = await searchResponse.json();
-                    console.log("Web Search Data:", searchData);
-                    webSearchResult = searchData?.text ? null : JSON.stringify(searchData);
-                }
-            } catch (err) {
-                console.error("Web search failed:", err);
-            }
+        } else {
+            setLoadingPhase("thinking");
         }
-        console.log("Web Search Result:", webSearchResult);
-        setLoadingPhase("thinking");
-
-        setListWebSearchResult(prev => {
-            const newResults = [...prev];
-            newResults[newResults.length - 1] = webSearchResult;
-            return newResults;
-        });
 
         const response = await fetch("/aiResponse", {
             method: "POST",
@@ -277,7 +253,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 userMessage: originalUserMessage,
                 listImageData: newListImageData,
                 imageLink,
-                webSearchResult,
+                webSearchEnabled: shouldWebSearch,
             }),
         });
         let finalResponse = "";
@@ -308,8 +284,22 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
 
                         try {
                             const parsed = JSON.parse(data);
-                            const content = parsed.choices[0]?.delta?.content;
-                            const reasoning = parsed.choices[0]?.delta?.reasoning;
+                            if (Object.prototype.hasOwnProperty.call(parsed, "webSearchResult")) {
+                                webSearchResult = parsed.webSearchResult
+                                    ? JSON.stringify(parsed.webSearchResult)
+                                    : null;
+                                console.log("Web Search Result:", webSearchResult);
+                                setLoadingPhase("thinking");
+                                setListWebSearchResult(prev => {
+                                    const newResults = [...prev];
+                                    newResults[newResults.length - 1] = webSearchResult;
+                                    return newResults;
+                                });
+                                continue;
+                            }
+
+                            const content = parsed.choices?.[0]?.delta?.content;
+                            const reasoning = parsed.choices?.[0]?.delta?.reasoning;
                             if (content) {
                                 finalResponse += content;
                                 setListMessage(prev => {
@@ -334,6 +324,14 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
         }
         if (!finalResponse && aiReasoning) {
             finalResponse = aiReasoning;
+            setListMessage(prev => {
+                const newMessages = [...prev];
+                newMessages[newMessages.length - 1] += finalResponse;
+                return newMessages;
+            });
+        }
+        if (!finalResponse) {
+            finalResponse = "⚠️ **System:** I couldn't generate a response from the AI provider. Please try again.";
             setListMessage(prev => {
                 const newMessages = [...prev];
                 newMessages[newMessages.length - 1] += finalResponse;
