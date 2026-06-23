@@ -9,7 +9,7 @@ const MAX_REQUESTS_PER_WINDOW = 15; // 15 requests per minute
 const OPENROUTER_EMBEDDING_MODEL = "openai/text-embedding-3-large";
 const RAG_MATCH_COUNT = 8;
 const RAG_SIMILARITY_THRESHOLD = 0.10;
-const RAG_CONVERSATION_TAIL_CHARS = 2048;
+const RAG_CONVERSATION_TAIL_CHARS = 1024;
 const WEB_SEARCH_QUERY_MODEL = "google/gemini-3-flash-preview";
 const WEB_SEARCH_MAX_RESULTS = 8;
 
@@ -114,10 +114,8 @@ const formatAthaContext = (rows, { devAge }) => {
 
   return rows
     .map((row) => {
-      const title = row.title || "Atha Knowledge";
-      const content = String(row.content || "")
-        .replaceAll("{{devAge}}", String(devAge));
-      return `[${title}]\n${content}`;
+      const content = String(row.content || "");
+      return content;
     })
     .join("\n\n");
 };
