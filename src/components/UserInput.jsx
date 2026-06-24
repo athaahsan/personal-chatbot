@@ -43,6 +43,7 @@ const UserInput = forwardRef(({
     const [menuOpen, setMenuOpen] = useState(false);
     const [timeNow, setTimeNow] = useState('');
     const [webSearchEnabled, setWebSearchEnabled] = useState(false);
+    const [previousRetrievedTitles, setPreviousRetrievedTitles] = useState([]);
     const textareaRef = useRef(null);
 
     const MAX_LENGTH = 5000;
@@ -254,6 +255,7 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                 listImageData: newListImageData,
                 imageLink,
                 webSearchEnabled: shouldWebSearch,
+                previousRetrievedTitles,
             }),
         });
         let finalResponse = "";
@@ -288,6 +290,10 @@ USER: ${imageData2 ? "(Sent an image)" : ""} "${userMessage}"
                                 webSearchResult = parsed.webSearchResult
                                     ? JSON.stringify(parsed.webSearchResult)
                                     : null;
+                                if (Array.isArray(parsed.athaRagTitles)) {
+                                    setPreviousRetrievedTitles(parsed.athaRagTitles);
+                                    console.log("Atha RAG Titles:", parsed.athaRagTitles);
+                                }
                                 console.log("Web Search Result:", webSearchResult);
                                 setLoadingPhase("thinking");
                                 setListWebSearchResult(prev => {
