@@ -22,4 +22,4 @@ A personal AI assistant chatbot that answers questions about Atha Ahsan Xavier H
 ## Live Demo
 
 This project is hosted on Netlify:  
-👉 https://atha-personal-chatbot.netlify.app/
+👉 https://chatbot.athaahsan.com/
