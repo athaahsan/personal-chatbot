@@ -164,8 +164,6 @@ const retrieveAthaContext = async ({ userMessage, previousRetrievedTitles, devAg
   }
 };
 
-const getDateOnly = (date) => date.toISOString().slice(0, 10);
-
 const buildWebSearchPrompt = ({ convHistory = "", userMessage = "", timeNow = "" }) => `You are an AI agent specialized in generating precise web search queries for a personal chatbot.
 
 Your role is to:
@@ -238,10 +236,6 @@ const searchTavily = async (query) => {
     throw new Error("TAVILY_API_KEY environment variable is missing.");
   }
 
-  const endDate = new Date();
-  const startDate = new Date(endDate);
-  startDate.setMonth(startDate.getMonth() - 3);
-
   const response = await fetch("https://api.tavily.com/search", {
     method: "POST",
     headers: {
@@ -252,8 +246,7 @@ const searchTavily = async (query) => {
       api_key: tavilyApiKey,
       query,
       max_results: WEB_SEARCH_MAX_RESULTS,
-      start_date: getDateOnly(startDate),
-      end_date: getDateOnly(endDate),
+      search_depth: "advanced",
     }),
   });
 
@@ -396,7 +389,7 @@ Use the above results to inform your response. Each result contains a url, title
 
 
   const system_prompt = `[SYSTEM]:
-You are the personal assistant of Atha Ahsan Xavier Haris, not Atha himself. Do not impersonate Atha or describe Atha's life using first-person language. Your job is to answer USER questions about Atha using retrieved personal knowledge or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if they exist) for context. This assistant runs on OpenAI GPT-5.2 via OpenRouter and can accept both text and image file inputs. This application uses retrieval-augmented generation (RAG) with Supabase to retrieve relevant personal knowledge about Atha at runtime. It also has a web search feature powered by the Tavily API, which can be manually toggled by the USER to retrieve information from the internet; the web search backend is handled through Netlify Edge Functions, where a lightweight query-planning model generates an optimized search query before retrieving web results. The main assistant responses are handled via Netlify Edge Functions. This application cannot edit or generate images—it can only analyze or describe the images provided. This application is hosted on Netlify.
+You are the personal assistant of Atha Ahsan Xavier Haris, not Atha himself. Do not impersonate Atha or describe Atha's life using first-person language. Your job is to answer USER questions about Atha using retrieved personal knowledge or to answer any other questions. You may refer to the [CONVERSATION HISTORY] and the [PAST IMAGE(S) SENT HISTORY] (if they exist) for context. This assistant runs on openai/gpt-5.2 via OpenRouter and can accept both text and image file inputs. This application uses retrieval-augmented generation (RAG) with Supabase to retrieve relevant personal knowledge about Atha at runtime. It also has a web search feature powered by the Tavily API, which can be manually toggled by the USER to retrieve information from the internet; the web search backend is handled through Netlify Edge Functions, where a lightweight query-planning model generates an optimized search query before retrieving web results. The main assistant responses are handled via Netlify Edge Functions. This application cannot edit or generate images—it can only analyze or describe the images provided. This application is hosted on Netlify.
 
 [INSTRUCTIONS]:
 * Always respond entirely in the same language as [USER MESSAGE (JUST SENT)].
@@ -695,7 +688,6 @@ ${webSearchSection}
       "Content-Encoding": "identity",
       "Transfer-Encoding": "chunked",
       "X-Accel-Buffering": "no",
-      "X-Web-Search-Section": webSearchSection ? encodeURIComponent(webSearchSection) : "null",
       "X-Web-Search-Result": webSearchResult ? "available-in-stream" : "null",
       "X-Atha-RAG-Titles": athaRag.titles.length > 0 ? encodeURIComponent(athaRag.titles.join(",")) : "null",
     },
