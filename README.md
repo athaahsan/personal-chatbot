@@ -16,7 +16,7 @@ A personal AI assistant chatbot that answers questions about Atha Ahsan Xavier H
 - **Frontend**: React.js, Vite
 - **Styling**: Tailwind CSS, DaisyUI
 - **LLM**: `openai/gpt-5.4` via OpenRouter
-- **Embeddings & RAG**: OpenAI text-embedding-3-large via OpenRouter + Supabase Vector
+- **Embeddings & RAG**: `google/gemini-embedding-2` via OpenRouter + Supabase Vector
 - **Web Search Pipeline**: Tavily API + Netlify Edge Functions
 - **Hosting & Backend**: Netlify (Functions + Edge Functions)
 
